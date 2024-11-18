@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Exception;
-
+use Affinidi\AffinidiTDK;
 
 class CredentialController extends Controller
 {
@@ -18,7 +18,7 @@ class CredentialController extends Controller
             $credentials_request =
                 [
                     [
-                        "credentialTypeId" => "AnyTcourseCertificateV1R0",
+                        "credentialTypeId" => config('services.affinidiCIS.courseCredentialTypeId'),
                         "credentialData" => [
                             "courseID" => "EMP-IT-AUTOMATION-2939302",
                             "course" => [
@@ -45,7 +45,11 @@ class CredentialController extends Controller
 
             $apiMethod = '/cis/v1/' . config('services.affinidi_tdk.project_Id') . '/issuance/start';
 
-            $data = \Affinidi\SocialiteProvider\AffinidiTDK::InvokeAPI($apiMethod, [
+            $tdk = new AffinidiTDK(
+                config('services.affinidi_tdk')
+            );
+
+            $data = $tdk->InvokeAPI($apiMethod, [
                 'data' => $credentials_request,
                 'claimMode' => "TX_CODE"
             ]);

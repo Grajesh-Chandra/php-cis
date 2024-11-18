@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "affinidi/affinidi-php-tdk": "^1.0",
         "affinidi/laravel-socialite-affinidi": "^1.12",
         "firebase/php-jwt": "^6.10",
         "guzzlehttp/guzzle": "^7.2",
