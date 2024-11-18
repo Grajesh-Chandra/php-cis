@@ -26,9 +26,9 @@ affinidi start
 
 2. Once logged in successfully, create token by running below command
 
-   ```sh
-   affinidi token create-token
-   ```
+```sh
+affinidi token create-token
+```
 
 Follow the instruction
 
