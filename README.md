@@ -1,6 +1,6 @@
 # Affinidi login demo with Laravel using Socialite
 
-This is a template that showcases how to use Affinidi Vault to perform authentication and to interact with the vault. It accomplishes this through Affinidi Vault Chrome Extension using the [OpenID for Verifiable Presentations specification.](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
+This is a template that showcases how to use Affinidi Vault to perform authentication and to interact with the vault. It accomplishes this through Affinidi Vault using the [OpenID for Verifiable Presentations specification.](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
 
 First, copy `.env.example` to `.env`:
 
@@ -16,13 +16,27 @@ Install the required dependencies:
 composer install
 ```
 
-## Create Login Configuration and update .env
+## Affinidi Credential Issuance
 
-Create your Affinidi Login Configuration with the [Affinidi CLI](https://github.com/affinidi/affinidi-cli#set-up-affinidi-login-for-your-applications) or at [Affinidi Portal](https://portal.affinidi.com/), make sure to add `http://localhost:8010/login/affinidi/callback` into authorized redirect URIs.
+1. Click here to [Set up your Personnel Access Token to interact with Affinidi services](./docs/create-pat.md)
 
-Please read the [setup login config guide](./docs/setup-login-config.md) to understand more about setting up login configuration.
+2. Click here to [Set up your Credential Issuance Configuration](./docs/cis-configuration.md)
 
-Fill the client ID, secret and issuer URL in `.env` file
+Update `.env` file with below values from Personal Access Token
+
+```
+PROJECT_ID=""
+KEY_ID="" # optional. required if different key_id is used or else Token_Id=Key_Id
+TOKEN_ID=""
+PASSPHRASE="" # Optional. Required if private key is encrypted
+PRIVATE_KEY=""
+```
+
+Update `.env` file with below values from Credential Issuance configuration
+
+```
+COURSE_CREDENTIAL_TYPE_ID="AnyTcourseCertificateV1R0"
+```
 
 ## Run
 
@@ -32,7 +46,15 @@ Start server with:
 php artisan serve
 ```
 
-Then visit: http://localhost:8010/
+Then visit: http://localhost:8010/cis
+
+## (Optional Step) - Create Login Configuration and update .env
+
+Create your Affinidi Login Configuration with the [Affinidi CLI](https://github.com/affinidi/affinidi-cli#set-up-affinidi-login-for-your-applications) or at [Affinidi Portal](https://portal.affinidi.com/), make sure to add `http://localhost:8010/login/affinidi/callback` into authorized redirect URIs.
+
+Please read the [setup login config guide](./docs/setup-login-config.md) to understand more about setting up login configuration.
+
+Fill the client ID, secret and issuer URL in `.env` file
 
 ## Read More
 
@@ -45,7 +67,6 @@ Affinidi collects usage data to improve our products and services. For informati
 ## Feedback, Support, and Community
 
 [Click here](https://github.com/affinidi/reference-app-affinidi-vault/issues) to create a ticket and we will get on it right away. If you are facing technical or other issues, you can [Contact Support](https://share.hsforms.com/1i-4HKZRXSsmENzXtPdIG4g8oa2v).
-
 
 ## FAQ
 
