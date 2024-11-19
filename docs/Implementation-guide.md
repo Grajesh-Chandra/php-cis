@@ -29,11 +29,11 @@ When issuing a Verifiable Credential, three main flows happen within the whole p
 
 ![Issuance Configuration](./cis-image/cis-config1.png)
 
-- Credential Issuance Flow
+- Credential Issuance Flow [ claimMode: **TX_CODE**]
 
 ![Credential Issuance Flow](./cis-image/cis-flow.png)
 
-- Credential Offer Claim [ default : **TX_CODE**]
+- Credential Offer Claim [ claimMode : **FIXED_HOLDER**]
 
 ![Credential Offer Claim](./cis-image/cis-claim.png)
 
