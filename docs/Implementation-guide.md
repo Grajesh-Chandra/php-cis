@@ -1,4 +1,4 @@
-# **Implementation Guide for Affinidi Credemtial Issuance**
+# **Implementation Guide for Affinidi Credential Issuance**
 
 ## **1. Overview**
 
@@ -155,6 +155,12 @@ use App\Http\Controllers\CredentialController;
 
 Route::post('/issue-credential', [CredentialController::class, 'issueCredential']);
 
+```
+
+In case your api.php doesn't exsit, create using below command.
+
+```php
+php artisan install:api
 ```
 
 ### **Step 6: Security**
