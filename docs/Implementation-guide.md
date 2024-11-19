@@ -63,8 +63,6 @@ to enable service to service level communication below backend variables are req
 - **PASSPHRASE** # Optional. Required if private key is encrypted
 - **PRIVATE_KEY**
 
-**Estimated Time**: 15 min
-
 ### **Step 3: Install Dependencies**
 
 Install dependencies for using Affinidi Services
@@ -167,5 +165,3 @@ Route::post('/issue-credential', [CredentialController::class, 'issueCredential'
 ## **3. Referemce Implementation**
 
 You can refer to the [Github](https://github.com/Grajesh-Chandra/php-cis/) repo for running this Application.
-
-Now you are ready to run your Application.
