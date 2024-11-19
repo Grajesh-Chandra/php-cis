@@ -1,6 +1,6 @@
-# Affinidi login demo with Laravel using Socialite
+# Affinidi Trust Network Implementation
 
-This is a template that showcases how to use Affinidi Vault to perform authentication and to interact with the vault. It accomplishes this through Affinidi Vault using the [OpenID for Verifiable Presentations specification.](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
+This is a template that showcases how you can enable your applications to issue credentials to users and store them in their Affinidi Vault. It accomplishes this through Affinidi Vault using the [OpenID for Verifiable Credential Issuance](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) and [OpenID for Verifiable Presentations specification.](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) specification.
 
 First, copy `.env.example` to `.env`:
 
