@@ -29,7 +29,7 @@ When issuing a Verifiable Credential, three main flows happen within the whole p
 
 ![Issuance Configuration](./cis-image/cis-config1.png)
 
-- Credential Issuance Flow [ claimMode: **TX_CODE**]
+- Credential Issuance Flow [ claimMode: **TX_CODE** (Default)]
 
 ![Credential Issuance Flow](./cis-image/cis-flow.png)
 
@@ -37,9 +37,7 @@ When issuing a Verifiable Credential, three main flows happen within the whole p
 
 ![Credential Offer Claim](./cis-image/cis-claim.png)
 
-1. User Request → 2. Backend Validation → 3. Credential Issuance → 4. Notification.
-
----
+Refer More details on [Affinidi Credential Issuance here](https://docs.affinidi.com/docs/affinidi-elements/credential-issuance/)
 
 ## **3. Implementation Steps**
 
