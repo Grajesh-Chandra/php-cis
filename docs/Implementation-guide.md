@@ -23,7 +23,19 @@ The Credential Issuance Service follows a pre-defined Schema to issue Verifiable
 
 ### **Flow Diagram**
 
-Illustrate the end-to-end process, such as: <>
+When issuing a Verifiable Credential, three main flows happen within the whole process:
+
+- Issuance Configuration
+
+![Issuance Configuration](./cis-image/cis-config1.png)
+
+- Credential Issuance Flow
+
+![Credential Issuance Flow](./cis-image/cis-flow.png)
+
+- Credential Offer Claim [ default : **TX_CODE**]
+
+![Credential Offer Claim](./cis-image/cis-claim.png)
 
 1. User Request → 2. Backend Validation → 3. Credential Issuance → 4. Notification.
 
@@ -153,3 +165,9 @@ Route::post('/issue-credential', [CredentialController::class, 'issueCredential'
 
 - Affinidi API is protected with Project Level Access Token which is handled by Affinidi Library.
 - Project Level Token is `bearer` Token
+
+## **3. Referemce Implementation**
+
+You can refer to the [Github](https://github.com/Grajesh-Chandra/php-cis/) repo for running this Application.
+
+Now you are ready to run your Application.
