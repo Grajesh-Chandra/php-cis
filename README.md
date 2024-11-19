@@ -18,9 +18,8 @@ composer install
 
 ## Affinidi Credential Issuance
 
-1. Click here to [Set up your Personnel Access Token to interact with Affinidi services](./docs/create-pat.md)
-
-2. Click here to [Set up your Credential Issuance Configuration](./docs/cis-configuration.md)
+1. Click here to [Set up your Credential Issuance Configuration](./docs/cis-configuration.md)
+2. Click here to [Set up your Personnel Access Token to interact with Affinidi services](./docs/create-pat.md)
 
 Update `.env` file with below values from Personal Access Token
 
