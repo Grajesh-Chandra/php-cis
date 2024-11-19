@@ -73,7 +73,24 @@ composer require affinidi/affinidi-php-tdk
 
 For more details on usages of this library refer [documentation here](https://packagist.org/packages/affinidi/affinidi-php-tdk)
 
-### **Step 4: Create APIs**
+### **Step 4: Refer Env variables in services**
+
+In `service.php` create config for env variables
+
+```php
+    'affinidi_tdk' => [
+        'api_gateway_url' => env('API_GATEWAY_URL'),
+        'token_endpoint' => env('TOKEN_ENDPOINT'),
+        'project_Id' => env('PROJECT_ID'),
+        'private_key' => env('PRIVATE_KEY'),
+        'token_id' => env('TOKEN_ID'),
+        'passphrase' => env('PASSPHRASE'),
+        'key_id' => env('KEY_ID'),
+        'vault_url' => env('VAULT_URL'),
+    ]
+```
+
+### **Step 5: Create APIs**
 
 - **Controller Layer**: Create Controller in php
 
@@ -146,7 +163,7 @@ use Affinidi\AffinidiTDK;
     }
 ```
 
-### **Step 5: Create Routes**
+### **Step 6: Create Routes**
 
 Create api routes
 
@@ -163,7 +180,7 @@ In case your api.php doesn't exsit, create using below command.
 php artisan install:api
 ```
 
-### **Step 6: Security**
+### **Step 7: Security**
 
 - Affinidi API is protected with Project Level Access Token which is handled by Affinidi Library.
 - Project Level Token is `bearer` Token
