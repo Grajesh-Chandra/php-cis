@@ -185,6 +185,6 @@ php artisan install:api
 - Affinidi API is protected with Project Level Access Token which is handled by Affinidi Library.
 - Project Level Token is `bearer` Token
 
-## **3. Referemce Implementation**
+## **4. Reference Implementation**
 
 You can refer to the [Github](https://github.com/Grajesh-Chandra/php-cis/) repo for running this Application.
