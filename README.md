@@ -34,7 +34,10 @@ PRIVATE_KEY=""
 Update `.env` file with below values from Credential Issuance configuration
 
 ```
-COURSE_CREDENTIAL_TYPE_ID="AnyTcourseCertificateV1R0"
+PERSONAL_INFORMATION_CREDENTIAL_TYPE_ID="TPersonalInformationVerificationV1R0"
+ADDRESS_CREDENTIAL_TYPE_ID="TAddressVerificationV1R0"
+EDUCATION_CREDENTIAL_TYPE_ID="TEducationVerificationV1R0"
+EMPLOYMENT_CREDENTIAL_TYPE_ID="TEmploymentVerificationV1R1"
 ```
 
 ## Run

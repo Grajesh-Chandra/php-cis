@@ -23,6 +23,10 @@ return [
 
     'affinidiCIS' => [
         'courseCredentialTypeId' => env('COURSE_CREDENTIAL_TYPE_ID'),
+        'personalInformationCredentialTypeId' => env('PERSONAL_INFORMATION_CREDENTIAL_TYPE_ID'),
+        'employmentCredentialTypeId' => env('EMPLOYMENT_CREDENTIAL_TYPE_ID'),
+        'educationCredentialTypeId' => env('EDUCATION_CREDENTIAL_TYPE_ID'),
+        'addressCredentialTypeId' => env('ADDRESS_CREDENTIAL_TYPE_ID'),
     ],
 
     'affinidi_iota' => [

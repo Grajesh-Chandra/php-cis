@@ -25,9 +25,30 @@ For more information, refer to the [Wallets documentation](https://docs.affinidi
 Schema 1 :
 
 - _Schema_ as `Manual Input`,
-- _Credential Type ID_ as `AnyTcourseCertificateV1R0`
-- _JSON Schema URL_ as `https://schema.affinidi.io/AnyTcourseCertificateV1R0.json`
-- _JSDON-LD Context URL_ = `https://schema.affinidi.io/AnyTcourseCertificateV1R0.jsonld`
+- _Credential Type ID_ as `TPersonalInformationVerificationV1R0`
+- _JSON Schema URL_ as `https://schema.affinidi.io/TPersonalInformationVerificationV1R0.json`
+- _JSDON-LD Context URL_ = `https://schema.affinidi.io/TPersonalInformationVerificationV1R0.jsonld`
+
+Schema 2 :
+
+- _Schema_ as `Manual Input`,
+- _Credential Type ID_ as `TAddressVerificationV1R0`
+- _JSON Schema URL_ as `https://schema.affinidi.io/TAddressVerificationV1R0.json`
+- _JSDON-LD Context URL_ = `https://schema.affinidi.io/TAddressVerificationV1R0.jsonld`
+
+Schema 3 :
+
+- _Schema_ as `Manual Input`,
+- _Credential Type ID_ as `TEmploymentVerificationV1R1`
+- _JSON Schema URL_ as `https://schema.affinidi.io/TEmploymentVerificationV1R1.json`
+- _JSDON-LD Context URL_ = `https://schema.affinidi.io/TEmploymentVerificationV1R1.jsonld`
+
+Schema 4 :
+
+- _Schema_ as `Manual Input`,
+- _Credential Type ID_ as `TEducationVerificationV1R0`
+- _JSON Schema URL_ as `https://schema.affinidi.io/TEducationVerificationV1R0.json`
+- _JSDON-LD Context URL_ = `https://schema.affinidi.io/TEducationVerificationV1R0.jsonld`
 
 Sample Configuration
 ![alt text](./cis-image/cis-config.png)
