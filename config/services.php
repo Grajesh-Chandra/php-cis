@@ -31,7 +31,7 @@ return [
 
     'affinidi_iota' => [
         'config_id' => env('IOTA_CONFIG_ID'),
-        'course_query_id' => env('IOTA_COURSE_CREDENTIAL_QUERY'),
+        'avvanz_query_id' => env('IOTA_AVVANZ_CREDENTIAL_QUERY'),
     ],
 
 ];

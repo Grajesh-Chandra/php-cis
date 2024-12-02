@@ -31,7 +31,7 @@ Route::get('/iota', function (Request $request) {
         'iota',
         [
             'config_id' => $iotaConfig["config_id"],
-            'course_query_id' => $iotaConfig["course_query_id"],
+            'avvanz_query_id' => $iotaConfig["avvanz_query_id"],
             'response_code' => $response_code,
         ]
     );
