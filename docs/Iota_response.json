@@ -4,6 +4,57 @@
   "verifiableCredential": [
     {
       "credentialSchema": {
+        "type": "TAddressVerificationV1R0",
+        "id": "https://schema.affinidi.io/TAddressVerificationV1R0.json"
+      },
+      "credentialSubject": {
+        "address": {
+          "addressCountry": "India",
+          "addressLine1": "Varthur, Gunjur",
+          "addressLine2": "B305, Candeur Landmark, Tower Eiffel",
+          "addressRegion": "Karnataka",
+          "postalCode": "560087"
+        },
+        "ownerDetails": {
+          "ownerName": "TestOwner",
+          "ownerContactDetails1": "+912325435634"
+        },
+        "verificationStatus": "Completed",
+        "verificationEvidence": {
+          "evidenceName1": "Letter",
+          "evidenceURL1": "http://localhost"
+        },
+        "stayDetails": {
+          "fromDate": "01-01-2000",
+          "toDate": "01-01-2020"
+        },
+        "verificationRemarks": "done",
+        "neighbourDetails": {
+          "neighbourName": "Test Neighbour",
+          "neighbourContactDetails1": "+912325435634"
+        }
+      },
+      "issuanceDate": "2024-12-02T16:53:40.405Z",
+      "holder": {
+        "id": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15"
+      },
+      "id": "claimId:97c5117320016ec0",
+      "type": ["VerifiableCredential", "TAddressVerificationV1R0"],
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://schema.affinidi.io/TAddressVerificationV1R0.jsonld"
+      ],
+      "issuer": "did:key:zQ3shNyLdzYDbwZibk5hinAm5ChzxMinywBJz98fbFcQbn6Xf",
+      "proof": {
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "2024-12-02T16:53:50Z",
+        "verificationMethod": "did:key:zQ3shNyLdzYDbwZibk5hinAm5ChzxMinywBJz98fbFcQbn6Xf#zQ3shNyLdzYDbwZibk5hinAm5ChzxMinywBJz98fbFcQbn6Xf",
+        "proofPurpose": "assertionMethod",
+        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..Jiq6yE6BTq9wXI2QT8-174_BAA-W2fdEF1d5DaUXEC1gMr62zSw2pGL_fl_eIBUPwKsOgc6TA0E1_rMmD8BOKA"
+      }
+    },
+    {
+      "credentialSchema": {
         "type": "TPersonalInformationVerificationV1R0",
         "id": "https://schema.affinidi.io/TPersonalInformationVerificationV1R0.json"
       },
@@ -182,14 +233,14 @@
   "holder": {
     "id": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15"
   },
-  "id": "claimId:CL3QTOE0rGtF54mLP653O",
+  "id": "claimId:shoF3e1r7mWQvhG6ftNmu",
   "proof": {
     "type": "EcdsaSecp256k1Signature2019",
-    "created": "2024-12-02T16:57:28Z",
+    "created": "2024-12-02T17:11:46Z",
     "verificationMethod": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15#zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15",
     "proofPurpose": "authentication",
-    "challenge": "3d19d277-7",
+    "challenge": "9a715747-4",
     "domain": "did:key:zQ3shNyLdzYDbwZibk5hinAm5ChzxMinywBJz98fbFcQbn6Xf",
-    "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..nPkSjHZTLI1aAsD_J7Wl4GDNY6lx_jtPwPVDKC2Z82Ej0n0xfcXZ09Lt--fqqAQluhodVnZB02Ry5GOJTx3wvg"
+    "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..piZhsFtXiGId1j3pIeeZdO6k0pjlCdU2s00UB4btGI1odb9aBN0mRALMqrO-Wbsn3hXa6E2ZqpMpB0reqlh5sg"
   }
 }

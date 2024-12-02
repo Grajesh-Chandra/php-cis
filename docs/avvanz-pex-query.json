@@ -1,5 +1,5 @@
 {
-  "id": "course_certificate",
+  "id": "avvanz_certificate",
   "input_descriptors": [
     {
       "id": "address_verification",
@@ -14,7 +14,7 @@
               "type": "array",
               "contains": {
                 "type": "string",
-                "pattern": "TPersonalInformationVerification"
+                "pattern": "TAddressVerification"
               }
             }
           }
