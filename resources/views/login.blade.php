@@ -74,6 +74,19 @@
             </a>
         </div>
     </div>
+    <div class="card-body">
+        <h2 class="h4 mb-1">Explore More</h2>
+        <hr class="mt-2">
+        <div>
+            <a href="/cis">
+                Affinidi Credential Issuance
+            </a>
+            <br/>
+            <a href="/iota">
+                Affinidi Iota Framework
+            </a>
+        </div>
+    </div>
 </body>
 
 </html>

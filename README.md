@@ -16,10 +16,12 @@ Install the required dependencies:
 composer install
 ```
 
-## Affinidi Credential Issuance
+## Affinidi Configurations
 
-1. Click here to [Set up your Credential Issuance Configuration](./docs/cis-configuration.md)
+1. Click here to [Set up your environment variables for Affinidi Login configuration](#set-up-your-affinidi-login-configuration)
 2. Click here to [Set up your Personnel Access Token to interact with Affinidi services](./docs/create-pat.md)
+3. Click here to [Set up your Credential Issuance Configuration](./docs/cis-configuration.md)
+4. Click here to [Set up your environment variables for Affinidi Iota configuration](#set-up-your-affinidi-iota-configuration)
 
 Update `.env` file with below values from Personal Access Token
 
@@ -50,13 +52,30 @@ php artisan serve
 
 Then visit: http://localhost:8010/cis
 
-## (Optional Step) - Create Login Configuration and update .env
 
-Create your Affinidi Login Configuration with the [Affinidi CLI](https://github.com/affinidi/affinidi-cli#set-up-affinidi-login-for-your-applications) or at [Affinidi Portal](https://portal.affinidi.com/), make sure to add `http://localhost:8010/login/affinidi/callback` into authorized redirect URIs.
+## Set up your Affinidi Login configuration
 
-Please read the [setup login config guide](./docs/setup-login-config.md) to understand more about setting up login configuration.
+1. Follow [this guide](./docs/setup-login-config.md) to set up your login configuration with callback URL as `http://localhost:8010/login/affinidi/callback`
 
-Fill the client ID, secret and issuer URL in `.env` file
+2. Copy your **Client ID**, **Client Secret** and **Issuer** from your login configuration and paste them into your `.env` file:
+
+```ini
+PROVIDER_CLIENT_ID="<CLIENT_ID>"
+PROVIDER_CLIENT_SECRET="<CLIENT_SECRET>"
+PROVIDER_ISSUER="<ISSUER>"
+```
+
+## Set up your Affinidi Iota configuration
+
+1. Follow [this guide](./docs/setup-iota-config.md) to set up your iota configuration
+
+2. Copy your **Configuration ID** and **Query ID** for address, and paste them into your `.env` file:
+
+```ini
+IOTA_CONFIG_ID="Iota configuration id"
+IOTA_AVVANZ_CREDENTIAL_QUERY="Query ID of VC Request"
+```
+
 
 ## Read More
 
