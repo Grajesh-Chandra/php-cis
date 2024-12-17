@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Exception;
-use Affinidi\AffinidiTDK;
+use App\Providers\AffinidiServices;
 
 class CredentialController extends Controller
 {
@@ -188,43 +188,12 @@ class CredentialController extends Controller
                 default:
                     return response()->json(["error" => "Invalid typeId"], 400);
             }
-            // $credentials_request =
-            //     [
-            //         [
-            //             "credentialTypeId" => config('services.affinidiCIS.courseCredentialTypeId'),
-            //             "credentialData" => [
-            //                 "courseID" => "EMP-IT-AUTOMATION-2939302",
-            //                 "course" => [
-            //                     "name" => "IT Automation with Python",
-            //                     "type" => "Professional Certificate",
-            //                     "url" => "",
-            //                     "courseDuration" => "45 Days"
-            //                 ],
-            //                 "learner" => [
-            //                     "name" => "",
-            //                     "email" => "grajesh.c@affinidi.com",
-            //                     "phone" => ""
-            //                 ],
-            //                 "achievement" => [
-            //                     "score" => "100",
-            //                     "grade" => "A"
-            //                 ],
-            //                 "courseMode" => "online",
-            //                 "completionDate" => "08/09/2024"
-            //             ]
-            //         ]
-            //     ];
-
-
-            $apiMethod = '/cis/v1/' . config('services.affinidi_tdk.project_Id') . '/issuance/start';
-
-            $tdk = new AffinidiTDK(
-                config('services.affinidi_tdk')
-            );
 
             Log::info('Issuing credential', ['credentials_request' => $credentials_request]);
 
-            $data = $tdk->InvokeAPI($apiMethod, [
+            $projectId = config('services.affinidi_tdk.project_Id');
+
+            $data = AffinidiServices::IssuanceStart($projectId, [
                 'data' => $credentials_request,
                 'claimMode' => "TX_CODE"
             ]);

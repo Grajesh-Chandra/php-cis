@@ -52,7 +52,6 @@ php artisan serve
 
 Then visit: http://localhost:8010/cis
 
-
 ## Set up your Affinidi Login configuration
 
 1. Follow [this guide](./docs/setup-login-config.md) to set up your login configuration with callback URL as `http://localhost:8010/login/affinidi/callback`
@@ -76,6 +75,93 @@ IOTA_CONFIG_ID="Iota configuration id"
 IOTA_AVVANZ_CREDENTIAL_QUERY="Query ID of VC Request"
 ```
 
+## How to Use Affinidi TDK for PHP
+
+Affinidi Trust Development Kit (Affinidi TDK)
+More details [here](https://github.com/affinidi/affinidi-tdk-php)
+
+1. Install the Affinidi TDK PHP package using composer
+
+```
+composer require affinidi-tdk/affinidi-tdk-php
+```
+
+2. Create Auth Provider using the Personal Access Token, which is used to generate Project Scope Token for making API calls
+
+```
+use AffinidiTdk\AuthProvider\AuthProvider;
+
+$params = [
+  'privateKey' => "",
+  'keyId' => '',
+  'passphrase' => '',
+  'projectId' => '',
+  'tokenId' => ''
+];
+
+$authProvider = new AuthProvider($params);
+```
+
+3. Call any TDK Client methods like ListWallets or Start Issuance etc..
+
+e.g. To get Wallets List
+
+```
+use AffinidiTdk\Clients\WalletsClient;
+...
+...
+$tokenCallback = [$authProvider, 'fetchProjectScopedToken'];
+$configCwe = WalletsClient\Configuration::getDefaultConfiguration()->setApiKey('authorization', '', $tokenCallback);
+
+$apiInstanceCwe = new WalletsClient\Api\WalletApi(
+    new GuzzleHttp\Client(),
+    $configCwe
+);
+
+$resultCwe = $apiInstanceCwe->listWallets();
+
+$resultCweJson = json_decode($resultCwe, true);
+
+print_r(count($resultCweJson['wallets']));
+```
+
+e.g. Issue a Verifiable Credentials
+
+```
+use AffinidiTdk\Clients\CredentialIssuanceClient as CredentialClient;
+...
+...
+$tokenCallback = [$authProvider, 'fetchProjectScopedToken'];
+
+$configClient = CredentialClient\Configuration::getDefaultConfiguration()->setApiKey('authorization', '', $tokenCallback);
+
+$apiInstance = new CredentialClient\Api\IssuanceApi(
+    new \GuzzleHttp\Client(),
+    $configClient
+);
+
+$project_id = "";
+$start_issuance_input= [
+    'data' => [
+        "credentialTypeId" => "ContactDetails",
+        "credentialData" => [
+            "name" => [
+                "givenName" => "Paramesh",
+                "familyName" => "Kamarthi",
+            ],
+            "email" => "paramesh.k@affinidi.com",
+            "gender" => "male"
+        ]
+    ],
+    'claimMode' => "TX_CODE"
+];
+
+$result = $apiInstance->startIssuance($project_id, $start_issuance_input);
+
+$resultJson = json_decode($result, true);
+
+print_r(count($resultJson));
+```
 
 ## Read More
 

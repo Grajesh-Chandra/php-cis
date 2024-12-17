@@ -11,6 +11,9 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Affinidi Iota Framework</h1>
+        <div class="text-center mt-4">
+            <a href="/">Home</a>
+        </div>
         <div class="text-center mt-4" id="divRequest">
             <button class="btn btn-primary" id="iota-btn">Request Avvanz Credentials</button>
         </div>
@@ -57,6 +60,7 @@
                     console.error('Error:', error);
                     divMessage.textContent = 'Failed iota request.';
                     divMessage.classList.add('text-danger');
+                    window.history.replaceState(null, '', window.location.pathname);
                 });
 
 

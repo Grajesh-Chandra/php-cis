@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
+use App\Providers\AffinidiServices;
 
 class IotaController extends Controller
 {
@@ -20,7 +21,7 @@ class IotaController extends Controller
             $redirectUri = $request->input('redirectUri');
             $nonce = $request->input('nonce');
 
-            $response = \Affinidi\SocialiteProvider\AffinidiTDK::InvokeAPI('/ais/v1/initiate-data-sharing-request', [
+            $response = AffinidiServices::IotaStart([
                 "configurationId" => $configurationId,
                 "mode" => "redirect",
                 "queryId" => $queryId,
@@ -28,7 +29,8 @@ class IotaController extends Controller
                 "nonce" => $nonce,
                 "redirectUri" => $redirectUri,
             ]);
-            if(!isset($response["data"])) {
+
+            if (!isset($response["data"])) {
                 return response()->json($response);
             }
             $data = $response["data"];
@@ -40,7 +42,7 @@ class IotaController extends Controller
             ];
 
             return response()->json($json_response);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // Handle or log the error
             error_log('JSON error: ' . $e->getMessage());
 
@@ -57,7 +59,7 @@ class IotaController extends Controller
             $correlationId = $request->input('correlationId');
             $transactionId = $request->input('transactionId');
 
-            $json_response = \Affinidi\SocialiteProvider\AffinidiTDK::InvokeAPI('/ais/v1/fetch-iota-response', [
+            $json_response = AffinidiServices::IotaCallback([
                 "configurationId" => $configurationId,
                 "responseCode" => $responseCode,
                 "correlationId" => $correlationId,
