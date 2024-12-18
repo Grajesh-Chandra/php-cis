@@ -23,7 +23,6 @@
 
     <script>
         const divMessage = document.getElementById('divMessage');
-
         const responseCode = "{{ $response_code }}";
         if (responseCode) {
             divMessage.textContent = "Get the response code from callback url";
@@ -34,7 +33,6 @@
                 ...iotaRedirect,
                 responseCode
             };
-
             divMessage.textContent = "Fetching VP Response from the response code";
             fetch('/api/iota-complete', {
                     method: 'POST',
@@ -47,13 +45,14 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
-                    if (!data.vpToken) {
+                    if (!data.vp_token) {
                         divMessage.textContent = 'Failed to get response from iota: ' + '' + data.message;
                         divMessage.classList.add('text-danger');
+                        window.history.replaceState(null, '', window.location.pathname);
                         return;
                     }
                     divMessage.classList.remove('text-center');
-                    divMessage.innerHTML = "<b>Here is your VP Response</b> <br/> <pre>" + JSON.stringify(JSON.parse(data.vpToken), null, 2) + "</pre>";
+                    divMessage.innerHTML = "<b>Here is your VP Response</b> <br/> <pre>" + JSON.stringify(JSON.parse(data.vp_token), null, 2) + "</pre>";
                     window.history.replaceState(null, '', window.location.pathname);
                 })
                 .catch((error) => {
@@ -68,6 +67,7 @@
 
         document.getElementById('iota-btn').addEventListener('click', function() {
 
+            divMessage.classList.remove('text-danger');
             divMessage.textContent = "Initiating request";
 
             const nonce = crypto.randomUUID().slice(0, 10);
