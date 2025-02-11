@@ -100,10 +100,21 @@
 
         .button-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, minmax(250px, 1fr));
+            /* Two columns, min width 250px, equal fractions */
             gap: 20px;
             margin-bottom: 30px;
             /* justify-content: center;  <- REMOVE this line if you don't want the whole group centered */
+        }
+
+        /* Media query for wider screens - adjust breakpoint as needed */
+        @media (min-width: 768px) {
+
+            /* Example breakpoint for medium to larger screens */
+            .button-group {
+                grid-template-columns: repeat(2, minmax(300px, 1fr));
+                /* Slightly wider columns on larger screens if needed */
+            }
         }
 
         .issue-credential-btn,
@@ -119,7 +130,8 @@
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 500;
+            /* Slightly reduce font-weight to match Iota button */
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
         }
@@ -136,6 +148,7 @@
         .issue-credential-btn:hover,
         .action-button:hover {
             background-color: #047a85;
+            /* Keep hover darker shade */
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -143,6 +156,7 @@
         .issue-credential-btn:active,
         .action-button:active {
             background-color: #03606b;
+            /* Keep active darker shade */
             transform: translateY(0);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
         }
@@ -528,6 +542,12 @@
                         <p class="webhook-response-detail" id="webhookMessage">Credential Status: Waiting to be checked.</p>
                         <div id="webhookResult"></div>
                     </div>
+                    <div id="vcDetailsSection" style="display: none;">
+                        <hr class="mt-2">
+                        <h4 class="webhook-response-title">Verifiable Credential Details</h4>
+                        <div id="vcDetails">
+                        </div>
+                    </div>
                 </div>
                 <div style="text-align: center;">
                     <button id="checkStatusButton" class="action-button status-check-button">Check Credential Status</button>
@@ -681,19 +701,78 @@
                     }
                     webhookResultDiv.appendChild(webhookInfoContainer);
 
-                    // OPTIONAL: If you want to also display the complete JSON response like in Iota page
-                    /*
-                    const completeResponseCard = document.createElement('div');
-                    completeResponseCard.className = 'vp-complete-response-card'; // Reusing style
-                    const completeResponseHeader = document.createElement('h5'); // Slightly smaller header
-                    completeResponseHeader.className = 'vp-complete-response-header';
-                    completeResponseHeader.textContent = 'Complete Webhook Response (JSON)';
-                    const completeResponsePre = document.createElement('pre');
-                    completeResponsePre.textContent = JSON.stringify(statusData, null, 2);
-                    completeResponseCard.appendChild(completeResponseHeader);
-                    completeResponseCard.appendChild(completeResponsePre);
-                    webhookResultDiv.appendChild(completeResponseCard);
-                    */
+                    // NEW: Process and display Verifiable Credential Details if available
+                    if (statusData.credential) { // Check if 'credential' field exists
+                        const vcDetailsSection = document.getElementById('vcDetailsSection');
+                        vcDetailsSection.style.display = 'block'; // Show the VC details section
+                        const vcDetailsDiv = document.getElementById('vcDetails');
+                        vcDetailsDiv.innerHTML = ''; // Clear any previous VC details
+
+                        // Function to create and append VC detail cards (similar to Iota page)
+                        function addVCCard(vcData) {
+                            const vcCard = document.createElement('div');
+                            vcCard.className = 'offer-ready-card'; // Reusing card style for VC details
+
+                            const vcHeader = document.createElement('div');
+                            vcHeader.className = 'offer-ready-header';
+                            const vcIcon = document.createElement('svg'); // You might want to use specific icons per VC type
+                            vcIcon.className = 'offer-ready-icon';
+                            vcIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.5 9.75a.75.75 0 0 1 1.5 0v2.25a.75.75 0 0 1-1.5 0V12zm1.5-4.5a.75.75 0 0 1 .75.75h.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75V7.5a.75.75 0 0 1 .75-.75h.008z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M12 17.25a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5zm0 1.5a6.75 6.75 0 1 1 0-13.5 6.75 0 0 1 0 13.5z" clip-rule="evenodd" /></svg>`; // Reusing offer-ready icon for now
+                            const vcTitle = document.createElement('h4');
+                            vcTitle.className = 'offer-ready-title';
+                            vcTitle.textContent = 'Verifiable Credential'; // Generic title, can be improved based on VC data
+                            vcHeader.appendChild(vcIcon);
+                            vcHeader.appendChild(vcTitle);
+                            vcCard.appendChild(vcHeader);
+
+                            const vcBody = document.createElement('div');
+                            vcBody.className = 'offer-ready-body';
+                            const vcInfo = document.createElement('div');
+                            vcInfo.className = 'offer-info';
+
+                            // Function to add VC info items (label-value pairs)
+                            function addVCInfoItem(label, value) {
+                                const infoItem = document.createElement('div');
+                                infoItem.className = 'offer-info-item';
+                                const infoLabel = document.createElement('span');
+                                infoLabel.className = 'offer-info-label';
+                                infoLabel.textContent = label + ':';
+                                const infoValue = document.createElement('p');
+                                infoValue.className = 'offer-info-value';
+
+                                if (typeof value === 'object' && value !== null) {
+                                    infoValue.textContent = JSON.stringify(value, null, 2);
+                                    infoValue.style.whiteSpace = 'pre-wrap';
+                                    infoValue.style.fontFamily = 'monospace';
+                                    infoValue.style.fontSize = '0.9rem';
+                                } else {
+                                    infoValue.textContent = value;
+                                }
+
+                                infoItem.appendChild(infoLabel);
+                                infoItem.appendChild(infoValue);
+                                vcInfo.appendChild(infoItem);
+                            }
+
+                            // Assuming vcData is an object with key-value pairs for VC details
+                            for (const vcKey in vcData) {
+                                if (vcData.hasOwnProperty(vcKey)) {
+                                    addVCInfoItem(vcKey, vcData[vcKey]);
+                                }
+                            }
+                            vcBody.appendChild(vcInfo);
+                            vcCard.appendChild(vcBody);
+                            vcDetailsDiv.appendChild(vcCard);
+                        }
+
+
+                        // Check if statusData.credential is an array or a single object
+                        if (Array.isArray(statusData.credential)) {
+                            statusData.credential.forEach(vc => addVCCard(vc)); // If array, loop and add cards
+                        } else if (typeof statusData.credential === 'object' && statusData.credential !== null) {
+                            addVCCard(statusData.credential); // If single object, add one card
+                        }
+                    }
 
 
                 } else {

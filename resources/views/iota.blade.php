@@ -391,7 +391,7 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log('Success:', data);
-                    if (!data.vp_token) {
+                    if (!data.vpToken) {
                         divMessage.textContent = 'Failed to get response from iota: ' + '' + data.message;
                         divMessage.classList.add('text-danger');
                         window.history.replaceState(null, '', window.location.pathname);
@@ -399,7 +399,7 @@
                     }
 
                     // Parse the VP token
-                    const vpResponse = JSON.parse(data.vp_token);
+                    const vpResponse = JSON.parse(data.vpToken);
 
                     // Clear the default message
                     divMessage.innerHTML = '';
