@@ -205,7 +205,7 @@ class CredentialController extends Controller
                 "expiresIn" => $data["expiresIn"],
                 "vaultLink" => config('services.affinidi_tdk.vault_url') . '/claim?credential_offer_uri=' . $data["credentialOfferUri"],
             ];
-
+            Log::info('Credential issued', ['json_response' => $json_response]);
             return response()->json($json_response);
         } catch (Exception $e) {
             // Handle or log the error
