@@ -23,5 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/issue-credential', [CredentialController::class, 'issueCredential']);
 Route::post('/accept-credential-status', [CredentialController::class, 'acceptCredentialStatus']);
+Route::post('/issued-credential', [CredentialController::class, 'IssuedCredential']);
 Route::post('/iota-start', [IotaController::class, 'start']);
 Route::post('/iota-complete', [IotaController::class, 'callback']);

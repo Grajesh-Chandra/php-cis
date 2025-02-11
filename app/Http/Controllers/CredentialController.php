@@ -236,4 +236,26 @@ class CredentialController extends Controller
             return response()->json(["success" => false, "error" => "Error fetching issued credentials", 'details' => $e->getMessage()], 500); // Include error details for debugging
         }
     }
+
+    public function IssuedCredential(Request $request)
+    {
+        try {
+            $issuanceId = $request->input('issuanceId');
+
+            Log::info('Request data', ['request' => $request->all()]);
+
+            if (!$issuanceId) {
+                return response()->json(["success" => false, "error" => "Missing Required field in request body"], 400);
+            }
+            $projectId = config('services.affinidi_tdk.project_Id');
+            $configurationId = config('services.affinidiCIS.configurationId');
+            $data = AffinidiServices::CredentialStatus($projectId, $configurationId, $issuanceId);
+
+            return response()->json($data); // Correctly return JSON response
+
+        } catch (Exception $e) {
+            Log::error('Error fetching issued credentials', ['error' => $e->getMessage()]);
+            return response()->json(["success" => false, "error" => "Error fetching issued credentials", 'details' => $e->getMessage()], 500); // Include error details for debugging
+        }
+    }
 }

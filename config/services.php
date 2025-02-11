@@ -27,6 +27,7 @@ return [
         'employmentCredentialTypeId' => env('EMPLOYMENT_CREDENTIAL_TYPE_ID'),
         'educationCredentialTypeId' => env('EDUCATION_CREDENTIAL_TYPE_ID'),
         'addressCredentialTypeId' => env('ADDRESS_CREDENTIAL_TYPE_ID'),
+        'configurationId' => env('CONFIGURATION_ID'),
     ],
 
     'affinidi_iota' => [

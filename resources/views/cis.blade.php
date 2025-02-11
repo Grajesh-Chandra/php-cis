@@ -6,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affinidi Issuance</title>
     <style>
-        /* Intuitive Design Styles */
+        /* Intuitive Design Styles - Consistent across all pages */
         body {
             font-family: 'Roboto', sans-serif;
-            /* More modern, friendly font */
             background-color: #eef2f7;
-            /* Softer, slightly warmer background grey */
             color: #4a5568;
-            /* Medium grey, softer than #333 */
             margin: 0;
             padding: 0;
             display: flex;
@@ -25,34 +22,26 @@
         .container {
             background-color: #ffffff;
             padding: 40px;
-            /* Increased padding for spaciousness */
             border-radius: 12px;
-            /* More rounded corners */
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            /* Slightly stronger, softer shadow */
             width: 100%;
-            max-width: 700px;
+            max-width: 900px;
+            /* Wider container to match Iota page */
             box-sizing: border-box;
             margin-top: 40px;
-            /* Increased top margin */
             margin-bottom: 40px;
-            /* Increased bottom margin */
         }
 
         .header-body {
             text-align: center;
             margin-bottom: 40px;
-            /* Increased margin */
         }
 
         h1 {
             font-size: 2.2rem;
-            /* Slightly larger title */
             color: #374151;
-            /* Darker, but still softer than pure black */
             margin-bottom: 15px;
             font-weight: 700;
-            /* Bold font weight for title */
         }
 
         .navigation-link {
@@ -71,52 +60,39 @@
 
         .card-body {
             margin-bottom: 30px;
-            /* Increased margin */
             text-align: center;
         }
 
         hr.mt-2 {
             border: 0;
             border-top: 2px solid #e0e0e0;
-            /* Slightly thicker hr */
             margin-top: 20px;
-            /* Increased margin */
             margin-bottom: 20px;
-            /* Increased margin */
         }
 
         .alert {
             padding: 20px;
-            /* Increased padding */
             border-radius: 8px;
-            /* Rounded corners for alerts */
             margin-bottom: 20px;
-            /* Increased margin */
             text-align: center;
             font-weight: 500;
             border-width: 1px;
-            /* Add border width for all alerts */
         }
 
         .alert-info {
             background-color: #e0f7fa;
-            /* Light teal background for info */
             color: #0f566b;
-            /* Darker teal text for info */
             border-color: #b2ebf2;
         }
 
         .alert-danger {
             background-color: #fdecea;
-            /* Light red background for danger */
             color: #991b1b;
-            /* Darker red text for danger */
             border-color: #fcc2c3;
         }
 
         .alert-success {
             background-color: #e6f9ec;
-            /* Light green background for success */
             color: #155724;
             border-color: #bef2c4;
         }
@@ -124,110 +100,88 @@
 
         .button-group {
             display: grid;
-            /* Using grid for better button layout */
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            /* Responsive button columns */
             gap: 20px;
-            /* Increased button spacing */
             margin-bottom: 30px;
-            /* Increased margin */
+            /* justify-content: center;  <- REMOVE this line if you don't want the whole group centered */
         }
 
         .issue-credential-btn,
         .action-button {
             display: flex;
-            /* Flex for icon and text alignment */
             align-items: center;
-            justify-content: center;
+            /* justify-content: center;  ! REMOVED - Ensure this is commented out or removed */
             padding: 15px 30px;
-            /* Increased button padding */
             background-color: #0694a2;
-            /* Teal button color */
             color: #ffffff;
             text-decoration: none;
             border-radius: 8px;
-            /* Rounded corners for buttons */
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
-            /* Slightly larger font */
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            /* Added transform for click feedback */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-            /* Subtle button shadow */
         }
 
         .issue-credential-btn svg,
         .action-button svg {
             margin-right: 10px;
-            /* Spacing between icon and text */
             height: 20px;
             width: 20px;
             fill: #ffffff;
-            /* Icon color white */
         }
 
 
         .issue-credential-btn:hover,
         .action-button:hover {
             background-color: #047a85;
-            /* Darker teal on hover */
             transform: translateY(-2px);
-            /* Slight lift on hover */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Increased shadow on hover */
         }
 
         .issue-credential-btn:active,
         .action-button:active {
             background-color: #03606b;
-            /* Even darker teal on active */
             transform: translateY(0);
-            /* Reset transform on active */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-            /* Reset shadow on active */
         }
 
 
         #divResponse,
         #divResponseError {
             margin-top: 25px;
-            /* Increased margin */
-            padding: 30px;
-            /* Increased padding */
+            padding: 0px;
+            /* Removed padding here, card will provide padding */
             border-radius: 10px;
-            /* Rounded corners for response areas */
-            background-color: #f7fafc;
-            /* Very light grey background */
-            border: 1px solid #e0e0e0;
+            background-color: transparent;
+            /* Make background transparent as card is used */
+            border: none;
+            /* No border needed */
             text-align: center;
         }
 
         #divResponse p,
         #divResponseError p {
             margin: 15px 0;
-            /* Increased paragraph margin */
             font-size: 1.1rem;
         }
 
         #vaultLink,
         #backLink {
             margin: 0 15px;
-            /* Increased spacing between action buttons */
             text-decoration: none;
         }
 
-        /* Enhanced Offer Ready Section */
+        /* Enhanced Offer Ready Section - Same as Iota Page's VP Response Card */
         .offer-ready-card {
             background-color: #ffffff;
-            /* White background card */
             border-radius: 12px;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-            /* Subtle card shadow */
             padding: 30px;
             text-align: left;
-            /* Left align text within the card */
+            margin-bottom: 25px;
+            /* Add margin between sections if needed */
         }
 
         .offer-ready-header {
@@ -240,14 +194,13 @@
             height: 40px;
             width: 40px;
             fill: #10b981;
-            /* Success/Green color for icon */
             margin-right: 20px;
         }
 
         .offer-ready-title {
             font-size: 1.7rem;
-            color: #10b981;
-            /* Green title color */
+            color: #374151;
+            /* Darker title color */
             margin: 0;
             font-weight: 700;
         }
@@ -266,7 +219,6 @@
         .offer-info {
             display: flex;
             flex-direction: column;
-            /* Stack offer info items */
             gap: 15px;
             margin-bottom: 25px;
         }
@@ -274,55 +226,44 @@
         .offer-info-item {
             display: flex;
             flex-direction: column;
-            /* Label above value */
         }
 
         .offer-info-label {
             font-weight: 600;
             color: #374151;
-            /* Darker label color */
             margin-bottom: 5px;
         }
 
         .offer-info-value {
             background-color: #f0f4f8;
-            /* Light grey background for value */
             padding: 12px 15px;
             border-radius: 8px;
             font-family: monospace;
-            /* Monospace font for code-like values */
             font-size: 0.95rem;
             color: #2d3748;
-            /* Dark grey value color */
             overflow-wrap: break-word;
-            /* Break long URLs */
         }
 
         .offer-ready-actions {
             display: flex;
             justify-content: center;
-            /* Center action buttons */
             gap: 20px;
         }
 
         .claim-button {
             background-color: #10b981;
-            /* Green Claim Offer button */
         }
 
         .claim-button:hover {
             background-color: #0b8a65;
-            /* Darker green on hover */
         }
 
         .return-button {
             background-color: #6b7280;
-            /* Grey Return Back button */
         }
 
         .return-button:hover {
             background-color: #4a5568;
-            /* Darker grey on hover */
         }
 
         /* Icons - Simple SVG Icons (Inline for simplicity, consider icon library for larger projects) */
@@ -342,14 +283,13 @@
             content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2 8h20v12H2V8zm10-6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>');
         }
 
-        /* Enhanced Home Button Style */
+        /* Enhanced Home Button Style - Same as Iota Page */
         .home-button-enhanced {
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 15px 30px;
             background-color: #6b7280;
-            /* Grey Home Button Color - Distinct from Teal */
             color: #ffffff;
             text-decoration: none;
             border-radius: 8px;
@@ -360,23 +300,160 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
             margin-bottom: 25px;
-            /* Keep margin for consistency */
             display: inline-block;
-            /* Ensure it behaves like a button */
         }
 
         .home-button-enhanced:hover {
             background-color: #4a5568;
-            /* Darker Grey on Hover */
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .home-button-enhanced:active {
             background-color: #374151;
-            /* Even Darker Grey on Active */
             transform: translateY(0);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+
+        /* Webhook Status Section  - Enhanced Card Style */
+        #webhookStatus {
+            margin-top: 25px;
+            display: none;
+            /* Hidden by default, shown after offer */
+        }
+
+        .webhook-response-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .webhook-response-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .webhook-response-icon {
+            height: 40px;
+            width: 40px;
+            fill: #10b981;
+            /* Using success icon color for webhook status */
+            margin-right: 20px;
+        }
+
+        .webhook-response-title {
+            font-size: 1.7rem;
+            color: #374151;
+            /* Darker title color */
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .webhook-response-body {
+            margin-bottom: 20px;
+        }
+
+        .webhook-response-detail {
+            color: #4a5568;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+
+        .webhook-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .webhook-info-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .webhook-info-label {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 5px;
+        }
+
+        .webhook-info-value {
+            background-color: #f0f4f8;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            /* Monospace font for webhook data */
+            font-size: 0.95rem;
+            color: #2d3748;
+            overflow-wrap: break-word;
+        }
+
+
+        /* Status Check Button Style - Same as before */
+        .status-check-button {
+            background-color: #2563eb;
+            align-items: center;
+            /* Example: Blue color */
+        }
+
+        .status-check-button:hover {
+            background-color: #1e40af;
+            /* Darker blue on hover */
+        }
+
+
+        /* JSON Response Display Styles - Reused from Iota page for consistency if needed */
+        .json-response-container {
+            background-color: #f7fafc;
+            /* Same as divResponse background */
+            border: 1px solid #e0e0e0;
+            /* Same border style */
+            border-radius: 8px;
+            padding: 20px;
+            font-family: monospace;
+            /* Monospace font for JSON-like appearance */
+            font-size: 0.95rem;
+            color: #2d3748;
+            text-align: left;
+            /* Align text to the left for readability */
+        }
+
+        .json-item {
+            margin-bottom: 8px;
+            /* Spacing between key-value pairs */
+            display: flex;
+            /* Use flex to align label and value nicely */
+            align-items: baseline;
+            /* Align items at the baseline */
+        }
+
+        .json-label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #374151;
+            /* Slightly darker label text */
+            flex-shrink: 0;
+            /* Prevent label from shrinking */
+            width: 150px;
+            /* Wider label for CIS page */
+            display: inline-block;
+            /* Ensure consistent width behavior */
+            text-align: right;
+            /* Right align labels for better readability */
+        }
+
+        .json-value {
+            word-wrap: break-word;
+            /* Break long words if needed */
+            overflow-wrap: break-word;
+            /* Alternative for older browsers */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -437,7 +514,26 @@
                     </a>
                     <a id="backLink" href="/cis" class="action-button return-button">Return Back</a>
                 </div>
+                <p id="issuanceId" style="display: none;"></p>
+
+                <div id="webhookStatus" class="webhook-response-card" style="display: none;">
+                    <div class="webhook-response-header">
+                        <svg class="webhook-response-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.5 9.75a.75.75 0 0 1 1.5 0v2.25a.75.75 0 0 1-1.5 0V12zm1.5-4.5a.75.75 0 0 1 .75.75h.008a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75V7.5a.75.75 0 0 1 .75-.75h.008z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd" d="M12 17.25a5.25 5.25 0 1 0 0-10.5 5.25 5.25 0 0 0 0 10.5zm0 1.5a6.75 6.75 0 1 1 0-13.5 6.75 0 0 1 0 13.5z" clip-rule="evenodd" />
+                        </svg>
+                        <h4 class="webhook-response-title">Credential Status</h4>
+                    </div>
+                    <div class="webhook-response-body">
+                        <p class="webhook-response-detail" id="webhookMessage">Credential Status: Waiting to be checked.</p>
+                        <div id="webhookResult"></div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button id="checkStatusButton" class="action-button status-check-button">Check Credential Status</button>
+                </div>
             </div>
+
         </div>
 
         <div class="card-body" id="divResponseError" style="display: none">
@@ -447,17 +543,20 @@
 
     <script>
         document.querySelectorAll('.issue-credential-btn').forEach(button => {
-            button.addEventListener('click', async function() {
-                const type = this.getAttribute('data-type');
-                issueCredential(type);
-                document.querySelectorAll('.issue-credential-btn').forEach(btn => btn.style.display = 'none');
-            });
+            button.addEventListener('click', issueCredentialHandler);
         });
+
+        async function issueCredentialHandler() {
+            const type = this.getAttribute('data-type');
+            issueCredential(type);
+            document.querySelectorAll('.issue-credential-btn').forEach(btn => btn.style.display = 'none');
+        }
+
 
         function issueCredential(type) {
             const divResponseError = document.getElementById('divResponseError');
             divResponseError.style.display = '';
-            divResponseError.querySelector('.alert-danger').textContent = 'Processing Issuance for ' + type + ' VC, Please wait...'; // Correctly set alert text
+            divResponseError.querySelector('.alert-danger').textContent = 'Processing Issuance for ' + type + ' VC, Please wait...';
 
             fetch('/api/issue-credential', {
                     method: 'POST',
@@ -479,13 +578,23 @@
                         divResponse.style.display = '';
                         document.getElementById('credentialOfferUri').textContent = data.credentialOfferUri;
                         document.getElementById('txCode').textContent = data.txCode;
-                        document.getElementById('vaultLink').href = data.vaultLink;
 
-                        divResponseError.style.display = 'none'; // Hide error div on success
+                        document.getElementById('vaultLink').href = data.vaultLink;
+                        divResponseError.style.display = 'none';
+
+                        // SET ISSUANCE ID HERE:
+                        document.getElementById('issuanceId').textContent = data.issuanceId; // Assuming your API response returns "issuanceId"
+
+                        // Show webhook status section (inside offer ready card now)
+                        const webhookStatus = document.getElementById('webhookStatus');
+                        webhookStatus.style.display = 'block';
+                        document.getElementById('webhookMessage').textContent = 'Credential Status: Waiting to be checked.'; // Initial message
+                        document.getElementById('webhookResult').innerHTML = ''; // Clear previous results
+
                     } else {
                         const divRequest = document.getElementById('divRequest');
                         divRequest.style.display = '';
-                        divResponseError.querySelector('.alert-danger').textContent = 'Failed to issue credential: ' + data.message; // Correctly set alert text
+                        divResponseError.querySelector('.alert-danger').textContent = 'Failed to issue credential: ' + data.message;
                         document.querySelectorAll('.issue-credential-btn').forEach(btn => btn.style.display = '');
                     }
                 })
@@ -493,9 +602,111 @@
                     console.error('Error:', error);
                     const divRequest = document.getElementById('divRequest');
                     divRequest.style.display = '';
-                    divResponseError.querySelector('.alert-danger').textContent = 'Failed to issue credential: ' + error.message; // Correctly set alert text
+                    divResponseError.querySelector('.alert-danger').textContent = 'Failed to issue credential: ' + error.message;
                     document.querySelectorAll('.issue-credential-btn').forEach(btn => btn.style.display = '');
                 });
+        }
+
+
+        // New function to handle button click for checking status
+        document.getElementById('checkStatusButton').addEventListener('click', fetchCredentialStatus);
+
+        async function fetchCredentialStatus() {
+            const webhookResultDiv = document.getElementById('webhookResult');
+            const webhookMessageDiv = document.getElementById('webhookMessage');
+            webhookMessageDiv.textContent = 'Checking credential status...';
+            webhookResultDiv.innerHTML = ''; // Clear previous content
+
+            try {
+                const issuanceId = document.getElementById('issuanceId').textContent;
+                const response = await fetch('/api/issued-credential', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        issuanceId
+                    })
+                });
+
+                if (!response.ok) {
+                    webhookMessageDiv.textContent = 'Error checking credential status:';
+                    webhookResultDiv.innerHTML = `<div class="alert alert-danger">HTTP error! status: ${response.status}</div>`;
+                    return;
+                }
+
+                const statusData = await response.json();
+                console.log('Credential Status Data (JSON):', statusData);
+
+                if (statusData && Object.keys(statusData).length > 0) {
+                    webhookMessageDiv.textContent = 'Credential Status Details:';
+                    webhookResultDiv.innerHTML = ''; // Clear previous alerts
+
+                    // Create a container for the JSON display
+                    const webhookInfoContainer = document.createElement('div');
+                    webhookInfoContainer.className = 'webhook-info'; // Using webhook-info class for styling
+
+                    // Function to format and append each key-value pair
+                    function addWebhookKeyValue(key, value) {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'webhook-info-item';
+                        const labelSpan = document.createElement('span');
+                        labelSpan.className = 'webhook-info-label';
+                        labelSpan.textContent = key + ':'; // Added colon for label
+                        const valuePara = document.createElement('p');
+                        valuePara.className = 'webhook-info-value';
+
+                        if (typeof value === 'object' && value !== null) {
+                            // If value is an object (and not null), stringify it to JSON
+                            valuePara.textContent = JSON.stringify(value, null, 2); // Use 2 spaces for indentation for readability
+                            valuePara.style.whiteSpace = 'pre-wrap'; // Preserve formatting of JSON
+                            valuePara.style.fontFamily = 'monospace'; // Use monospace for JSON-like appearance
+                            valuePara.style.fontSize = '0.9rem'; // Match font size
+                        } else {
+                            // If it's not an object (string, number, boolean, etc.), display as is
+                            valuePara.textContent = value;
+                        }
+
+                        itemDiv.appendChild(labelSpan);
+                        itemDiv.appendChild(valuePara);
+                        webhookInfoContainer.appendChild(itemDiv);
+                    }
+
+                    // Iterate through the JSON data and display it as key-value pairs
+                    for (const key in statusData) {
+                        if (statusData.hasOwnProperty(key)) {
+                            addWebhookKeyValue(key, statusData[key]);
+                        }
+                    }
+                    webhookResultDiv.appendChild(webhookInfoContainer);
+
+                    // OPTIONAL: If you want to also display the complete JSON response like in Iota page
+                    /*
+                    const completeResponseCard = document.createElement('div');
+                    completeResponseCard.className = 'vp-complete-response-card'; // Reusing style
+                    const completeResponseHeader = document.createElement('h5'); // Slightly smaller header
+                    completeResponseHeader.className = 'vp-complete-response-header';
+                    completeResponseHeader.textContent = 'Complete Webhook Response (JSON)';
+                    const completeResponsePre = document.createElement('pre');
+                    completeResponsePre.textContent = JSON.stringify(statusData, null, 2);
+                    completeResponseCard.appendChild(completeResponseHeader);
+                    completeResponseCard.appendChild(completeResponsePre);
+                    webhookResultDiv.appendChild(completeResponseCard);
+                    */
+
+
+                } else {
+                    webhookMessageDiv.textContent = 'Credential Status:';
+                    webhookResultDiv.innerHTML = `<div class="alert alert-info">No status data received yet.</div>`;
+                }
+
+
+            } catch (error) {
+                console.error('Error fetching credential status:', error);
+                webhookMessageDiv.textContent = 'Error checking credential status:';
+                webhookResultDiv.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
+            }
         }
     </script>
 </body>
