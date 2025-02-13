@@ -359,7 +359,7 @@
 
         <div class="card-body">
             <div id="divRequest">
-                <button class="iota-button" id="iota-btn">Request Avvanz Credentials</button>
+                <button class="iota-button" id="iota-btn">Showcasing Selective Sharing Credentials</button>
             </div>
             <div id="divMessage">
             </div>

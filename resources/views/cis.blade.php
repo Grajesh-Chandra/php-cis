@@ -605,6 +605,15 @@
                         // SET ISSUANCE ID HERE:
                         document.getElementById('issuanceId').textContent = data.issuanceId; // Assuming your API response returns "issuanceId"
 
+                        // Store state in session storage
+                        sessionStorage.setItem('cisState', JSON.stringify({
+                            offerGenerated: true,
+                            credentialOfferUri: data.credentialOfferUri,
+                            txCode: data.txCode,
+                            issuanceId: data.issuanceId,
+                            credentialType: type // Store the credential type
+                        }));
+
                         // Show webhook status section (inside offer ready card now)
                         const webhookStatus = document.getElementById('webhookStatus');
                         webhookStatus.style.display = 'block';
@@ -787,6 +796,45 @@
                 webhookResultDiv.innerHTML = `<div class="alert alert-danger">Error: ${error.message}</div>`;
             }
         }
+        // Add event listener to "Return Back" button to clear session storage
+        document.getElementById('backLink').addEventListener('click', function(event) {
+            sessionStorage.removeItem('cisState'); // Clear the cisState from session storage
+            // Optionally, explicitly reset UI (not always necessary as navigation to /cis reloads page)
+            // const divRequest = document.getElementById('divRequest');
+            // const divResponse = document.getElementById('divResponse');
+            // divRequest.style.display = '';
+            // divResponse.style.display = 'none';
+        });
+        // Check session storage on page load to restore state
+        window.addEventListener('load', function() {
+            const cisStateJSON = sessionStorage.getItem('cisState');
+            if (cisStateJSON) {
+                const cisState = JSON.parse(cisStateJSON);
+                if (cisState.offerGenerated) {
+                    const divRequest = document.getElementById('divRequest');
+                    const divResponse = document.getElementById('divResponse');
+                    divRequest.style.display = 'none';
+                    divResponse.style.display = '';
+                    document.getElementById('credentialOfferUri').textContent = cisState.credentialOfferUri;
+                    document.getElementById('txCode').textContent = cisState.txCode;
+                    document.getElementById('vaultLink').href = cisState.vaultLink || `#`; // Use offer URI as vault link if available, fallback to # to prevent broken link if vaultLink was not explicitly saved before
+
+                    document.getElementById('issuanceId').textContent = cisState.issuanceId;
+
+
+                    // Re-show webhook status section
+                    const webhookStatus = document.getElementById('webhookStatus');
+                    webhookStatus.style.display = 'block';
+                    document.getElementById('webhookMessage').textContent = 'Credential Status: Ready to be checked.'; // Or a more appropriate message
+                    document.getElementById('webhookResult').innerHTML = ''; // Clear previous results
+
+
+                    // Optionally, you could re-run fetchCredentialStatus here immediately on page load to update status if desired.
+                    // fetchCredentialStatus(); // Uncomment if you want to auto-check status on page load
+
+                }
+            }
+        });
     </script>
 </body>
 
