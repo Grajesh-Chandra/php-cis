@@ -1,9 +1,12 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>PHP Demo App</title>
+    <title>PHP Demo App - PDF Example</title>
     <style>
         /* Intuitive Design Styles - Consistent with CIS Page & EXPLORE LINKS BUTTONS ONLY */
         body {
@@ -200,40 +203,18 @@
 <body>
     <div class="container">
         <div class="header-body">
-            <h1>PHP Demo App</h1>
+            <h1>PHP PDF Generation Demo</h1>
         </div>
 
         <div class="card-body">
-            <h2 class="h4 mb-1">Sign in</h2>
-            <hr class="mt-2">
-            @if (session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-            @endif
-            @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
-
-            <div class="affinidi-login-div">
-                <a class="affinidi-login-dark-l" href="/login/affinidi">
-                    Affinidi Login
-                </a>
-            </div>
-        </div>
-
-        <div class="card-body">
-            <h2 class="h4 mb-1">Explore More</h2>
+            <h2 class="h4 mb-1">Generate PDF using TCPDF</h2>
             <hr class="mt-2">
             <div class="explore-links">
-                <a href="/cis">
-                    Affinidi Credential Issuance
+                <a href="{{ route('generate.pdf') }}">
+                    Generate PDF
                 </a>
-                <a href="/iota">
-                    Affinidi Iota Framework
-                </a>
-                <a href="/pdf">
-                    PDF Generation
+                <a href="{{ route('download.pdf') }}">
+                    Download PDF
                 </a>
             </div>
         </div>

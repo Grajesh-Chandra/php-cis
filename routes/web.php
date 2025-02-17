@@ -22,6 +22,9 @@ Route::get('/cis', function () {
     return view('cis');
 });
 
+Route::get('/pdf', function () {
+    return view('pdf');
+});
 
 Route::get('/iota', function (Request $request) {
 

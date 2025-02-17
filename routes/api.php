@@ -4,7 +4,9 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CredentialController;
+use App\Http\Controllers\generate_pdf;
 use App\Http\Controllers\IotaController;
+use App\Http\Controllers\GeneratePdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,5 @@ Route::post('/accept-credential-status', [CredentialController::class, 'acceptCr
 Route::post('/issued-credential', [CredentialController::class, 'IssuedCredential']);
 Route::post('/iota-start', [IotaController::class, 'start']);
 Route::post('/iota-complete', [IotaController::class, 'callback']);
+Route::get('/generate-pdf', [GeneratePdfController::class, 'generatePdf'])->name('generate.pdf');
+Route::get('/download-pdf', [GeneratePdfController::class, 'downloadPdf'])->name('download.pdf'); // New route for download
