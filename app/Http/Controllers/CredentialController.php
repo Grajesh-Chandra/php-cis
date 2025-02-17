@@ -449,22 +449,6 @@ class CredentialController extends Controller
                                             "neighborName" => "Emily Davis",
                                             "neighborContactNo" => "444-555-6666",
                                             "neighborEmail" => "emily.davis@example.com"
-                                        ],
-                                        [
-                                            "addressLine1" => "456 Elm St",
-                                            "addressLine2" => "",
-                                            "city" => "San Francisco",
-                                            "stateOrRegion" => "CA",
-                                            "postalCode" => "94107",
-                                            "country" => "USA",
-                                            "stayDateFrom" => "2020-06-01",
-                                            "stayDateTo" => "Present",
-                                            "houseOwnerName" => "Robert Brown",
-                                            "houseOwnerContactNo" => "777-888-9999",
-                                            "houseOwnerEmail" => "robert.brown@example.com",
-                                            "neighborName" => "Michael Green",
-                                            "neighborContactNo" => "000-111-2222",
-                                            "neighborEmail" => "michael.green@example.com"
                                         ]
                                     ]
                                 ],
@@ -485,21 +469,6 @@ class CredentialController extends Controller
                                                 "postalCode" => "94305",
                                                 "stateRegion" => "CA",
                                                 "city" => "Stanford"
-                                            ],
-                                            [
-                                                "institutionName" => "Harvard University",
-                                                "institutionContactNo" => "617-495-1000",
-                                                "institutionEmail" => "admissions@harvard.edu",
-                                                "isGraduated" => "Yes",
-                                                "dateFrom" => "2014-09-01",
-                                                "dateTo" => "2016-06-30",
-                                                "dateGraduated" => "2016-06-30",
-                                                "modeOfStudy" => "Part-time",
-                                                "addressLine1" => "Massachusetts Hall",
-                                                "addressLine2" => "",
-                                                "postalCode" => "02138",
-                                                "stateRegion" => "MA",
-                                                "city" => "Cambridge"
                                             ]
                                         ]
                                     ]
@@ -533,34 +502,6 @@ class CredentialController extends Controller
                                             "eligibleForRehire" => "Yes",
                                             "underAgency" => "No",
                                             "agencyName" => ""
-                                        ],
-                                        [
-                                            "companyName" => "Innovate Inc",
-                                            "position" => "Senior Developer",
-                                            "employmentStatus" => "Full-time",
-                                            "annualSalary" => "90000",
-                                            "salaryCurrency" => "USD",
-                                            "isCurrent" => "Yes",
-                                            "whenToContact" => "After 5 PM",
-                                            "canCommunicate" => "Yes",
-                                            "dateFrom" => "2018-07-01",
-                                            "dateTo" => "Present",
-                                            "reasonForLeaving" => "",
-                                            "companyEmail" => "hr@innovateinc.com",
-                                            "addressLine1" => "321 Innovation Dr",
-                                            "addressLine2" => "",
-                                            "postalCode" => "94043",
-                                            "stateRegion" => "CA",
-                                            "city" => "Mountain View",
-                                            "country" => "USA",
-                                            "hr_first_name" => "Bob",
-                                            "hr_last_name" => "Smith",
-                                            "hr_email" => "bob.smith@innovateinc.com",
-                                            "hr_contact_no" => "987-654-3210",
-                                            "hr_personnel_position" => "HR Director",
-                                            "eligibleForRehire" => "Yes",
-                                            "underAgency" => "No",
-                                            "agencyName" => ""
                                         ]
                                     ]
                                 ],
@@ -586,27 +527,6 @@ class CredentialController extends Controller
                                             "whenToContact" => "Anytime",
                                             "referenceRelationship" => "Supervisor",
                                             "bestTimeToCall" => "10 AM - 4 PM"
-                                        ],
-                                        [
-                                            "companyName" => "Innovate Inc",
-                                            "position" => "Senior Developer",
-                                            "supervisorFirstName" => "David",
-                                            "supervisorMiddleName" => "",
-                                            "supervisorLastName" => "Black",
-                                            "supervisorPosition" => "Project Manager",
-                                            "supervisorEmail" => "david.black@innovateinc.com",
-                                            "addressLine1" => "321 Innovation Dr",
-                                            "addressLine2" => "",
-                                            "postalCode" => "94043",
-                                            "stateRegion" => "CA",
-                                            "city" => "Mountain View",
-                                            "country" => "USA",
-                                            "contactNo" => "987-654-3210",
-                                            "isCurrent" => "Yes",
-                                            "canCommunicate" => "Yes",
-                                            "whenToContact" => "After 5 PM",
-                                            "referenceRelationship" => "Supervisor",
-                                            "bestTimeToCall" => "10 AM - 4 PM"
                                         ]
                                     ]
                                 ],
@@ -617,13 +537,6 @@ class CredentialController extends Controller
                                             "qualificationAttained" => "Oracle Certified Professional, Java SE 8 Programmer",
                                             "certificateNumber" => "OCJP123456789",
                                             "dateGranted" => "2015-08-15",
-                                            "country" => "USA"
-                                        ],
-                                        [
-                                            "certificateIssuingAuthority" => "Microsoft",
-                                            "qualificationAttained" => "Microsoft Certified: Azure Fundamentals",
-                                            "certificateNumber" => "AZF987654321",
-                                            "dateGranted" => "2020-03-20",
                                             "country" => "USA"
                                         ]
                                     ]
