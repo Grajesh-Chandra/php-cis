@@ -28,6 +28,7 @@ return [
         'educationCredentialTypeId' => env('EDUCATION_CREDENTIAL_TYPE_ID'),
         'addressCredentialTypeId' => env('ADDRESS_CREDENTIAL_TYPE_ID'),
         'configurationId' => env('CONFIGURATION_ID'),
+        'avvanzDigitalCredentialTypeId' => env('AVVANZ_DIGITAL_CREDENTIAL_ID'),
     ],
 
     'affinidi_iota' => [

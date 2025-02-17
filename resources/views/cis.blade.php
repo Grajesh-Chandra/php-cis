@@ -494,6 +494,12 @@
                 <button class="issue-credential-btn" data-type="employment">
                     <svg class="icon-employment"></svg> Employment Verification
                 </button>
+                <button class="issue-credential-btn" data-type="avvanz-full">
+                    <svg class="icon-employment"></svg> Avvanz Digital Credential - Full
+                </button>
+                <button class="issue-credential-btn" data-type="avvanz-partial">
+                    <svg class="icon-employment"></svg> Avvanz Digital Credential - Partial
+                </button>
             </div>
         </div>
 
