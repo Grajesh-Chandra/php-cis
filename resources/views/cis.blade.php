@@ -527,11 +527,29 @@
                     </div>
                 </div>
                 <div class="offer-ready-actions">
-                    <a id="vaultLink" href="#" class="action-button claim-button" target="_blank">
+                    <a id="vaultLink" href="#" class="action-button claim-button" target="_blank" onclick="openCenteredPopup(this.href, 'popup', 600, 600); return false;">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M6.75 15.75a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8.25 17.25h7.5a3.75 3.75 0 0 0-7.5 0zM15.75 15.75a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM15.75 17.25H18a3.75 3.75 0 0 0-3.75-3.75h-1.5a3.75 3.75 0 0 0-3.75 3.75h.75a2.25 2.25 0 0 1 4.5 0zM5.25 8.25a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0zM6.75 9.75H3A2.25 2.25 0 0 1 5.25 7.5h1.5a2.25 2.25 0 0 1 2.25 2.25v.75a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 10.5v-1.5a2.25 2.25 0 0 1 1.5-2.25zM18.75 8.25a2.25 2.25 0 1 1 4.5 0 2.25 2.25 0 0 1-4.5 0zM20.25 9.75h-3.75a2.25 2.25 0 0 1 2.25-2.25h1.5a2.25 2.25 0 0 1 2.25 2.25v.75a2.25 2.25 0 0 1-2.25 2.25h-1.5a2.25 2.25 0 0 1-2.25-2.25v-1.5a2.25 2.25 0 0 1 1.5-2.25z" />
                         </svg> Claim Offer
                     </a>
+
+                    <script>
+                        function openCenteredPopup(url, title, w, h) {
+                            const dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : window.screenX;
+                            const dualScreenTop = window.screenTop !== undefined ? window.screenTop : window.screenY;
+
+                            const width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+                            const height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+                            const left = ((width / 2) - (w / 2)) + dualScreenLeft;
+                            const top = ((height / 2) - (h / 2)) + dualScreenTop;
+                            const newWindow = window.open(url, title, `scrollbars=yes, width=${w}, height=${h}, top=${top}, left=${left}`);
+
+                            if (window.focus) {
+                                newWindow.focus();
+                            }
+                        }
+                    </script>
                     <a id="backLink" href="/cis" class="action-button return-button">Return Back</a>
                 </div>
                 <p id="issuanceId" style="display: none;"></p>
@@ -605,7 +623,7 @@
                         document.getElementById('credentialOfferUri').textContent = data.credentialOfferUri;
                         document.getElementById('txCode').textContent = data.txCode;
 
-                        document.getElementById('vaultLink').href = data.vaultLink;
+                        document.getElementById('vaultLink').href = data.vaultLink + "&return_uri=https%3A%2F%2Fpreferably-in-teal.ngrok-free.app%2Fclaim-completed";
                         divResponseError.style.display = 'none';
 
                         // SET ISSUANCE ID HERE:

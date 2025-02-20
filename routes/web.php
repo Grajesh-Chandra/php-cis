@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('login');
 });
 
+Route::get('/claim-completed', function () {
+    return view('completed');
+});
+
 Route::get('/cis', function () {
     return view('cis');
 });
