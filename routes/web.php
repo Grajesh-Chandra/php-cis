@@ -30,6 +30,10 @@ Route::get('/pdf', function () {
     return view('pdf');
 });
 
+Route::get('/verify', function () {
+    return view('verify');
+});
+
 Route::get('/iota', function (Request $request) {
 
     $iotaConfig = config('services.affinidi_iota');

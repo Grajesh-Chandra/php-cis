@@ -235,6 +235,9 @@
                 <a href="/pdf">
                     PDF Generation
                 </a>
+                <a href="/verify">
+                    Verify Final Check Report
+                </a>
             </div>
         </div>
     </div>
