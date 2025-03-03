@@ -46,8 +46,6 @@
             overflow: hidden;
         }
 
-        .verification-container::before {}
-
         .header {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -125,20 +123,24 @@
             width: 100%;
             padding: 1rem;
             background: var(--primary);
-            color: white;
+            background-color: #0694a2;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
             border: none;
             border-radius: 0.75rem;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .submit-btn:hover {
             background: var(--primary-hover);
+            background-color: #0694a2;
             transform: translateY(-1px);
             box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
         }
@@ -329,12 +331,12 @@
 
             try {
                 const response = await fetch("{{ route('verify.pdf') }}", {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token for Laravel
-                        }
-                    });
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF token
+                    }
+                });
 
                 const data = await response.json(); // Parse JSON response from API
 
