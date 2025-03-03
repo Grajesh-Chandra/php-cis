@@ -29,4 +29,4 @@ Route::post('/issued-credential', [CredentialController::class, 'IssuedCredentia
 Route::post('/iota-start', [IotaController::class, 'start']);
 Route::post('/iota-complete', [IotaController::class, 'callback']);
 Route::get('/generate-pdf', [GeneratePdfController::class, 'generatePdf'])->name('generate.pdf');
-Route::get('/download-pdf', [GeneratePdfController::class, 'downloadPdf'])->name('download.pdf'); // New route for download
+Route::get('/download-pdf', [GeneratePdfController::class, 'generatePdfWithAttachment'])->name('download.pdf'); // New route for download
