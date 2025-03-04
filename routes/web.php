@@ -26,6 +26,10 @@ Route::get('/cis', function () {
     return view('cis');
 });
 
+Route::get('/accounts', function () {
+    return view('accounts');
+});
+
 Route::get('/pdf', function () {
     return view('pdf');
 });

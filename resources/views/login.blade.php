@@ -3,98 +3,204 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PHP Demo App</title>
+    <title>PHP Demo App - Simplified Login</title>
     <style>
-        /* Intuitive Design Styles - Consistent with CIS Page & EXPLORE LINKS BUTTONS ONLY */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #eef2f7;
-            color: #4a5568;
+        /* --- Reset and Global Styles --- */
+        body,
+        html {
             margin: 0;
             padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0a1128;
+            /* Dark Blue Background - Avanz Style */
+            color: #e0e0e0;
+            /* Light Grey text for general readability */
+            height: 100%;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            /* Center content vertically */
             min-height: 100vh;
         }
 
         .container {
-            background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            width: 100%;
-            max-width: 700px;
+            background-color: #f9f9f9;
+            /* Very Light Grey Container Background */
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            /* Reduced max width for single column */
+            margin-top: 30px;
+            padding: 30px;
+            /* Increased padding for better spacing in single column */
             box-sizing: border-box;
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-
-        .header-body {
             text-align: center;
-            margin-bottom: 40px;
+            /* Center align content in container */
         }
 
-        h1 {
-            font-size: 2.2rem;
-            color: #374151;
-            margin-bottom: 15px;
-            font-weight: 700;
+        /* --- Header Section --- */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
         }
 
-        .navigation-link {
-            display: inline-block;
+        .header-logo {
+            font-size: 2.8em;
+            color: #2563eb;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .header-tagline {
+            font-size: 1em;
+            color: #6b7280;
+            margin-top: 0;
+        }
+
+        /* --- Main Content Area (Single Column now) --- */
+        .main-content {
+            width: 100%;
+            /* Main content takes full container width */
+        }
+
+        /* --- Login Form Section (Now the only column) --- */
+        .login-form-section {
+            max-width: 100%;
+            /* Allow login form to take full width */
+            margin: 0 auto;
+            /* Center login form if needed */
+        }
+
+        .login-form-section h2 {
+            text-align: center;
             margin-bottom: 25px;
+            font-size: 1.8em;
+            /* Slightly larger heading for focus */
+            color: #374151;
+            /* Dark grey heading color */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 500;
+            font-size: 1em;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        .login-button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
             color: #0694a2;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
         }
 
-        .navigation-link:hover {
-            color: #047a85;
+        .forgot-password:hover {
             text-decoration: underline;
         }
 
-        .card-body {
-            margin-bottom: 30px;
+        .register-section {
             text-align: center;
-        }
-
-        hr.mt-2 {
-            border: 0;
-            border-top: 2px solid #e0e0e0;
             margin-top: 20px;
-            margin-bottom: 20px;
         }
 
-        .alert {
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            text-align: center;
+        .register-text {
+            font-size: 0.95em;
+            color: #4a5568;
+            margin-bottom: 10px;
+        }
+
+        .register-button {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #e0e7ff;
+            color: #1e3a8a;
+            text-decoration: none;
+            border-radius: 6px;
             font-weight: 500;
-            border-width: 1px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
         }
 
-        .alert-danger {
-            background-color: #fdecea;
-            color: #991b1b;
-            border-color: #fcc2c3;
+        .register-button:hover {
+            background-color: #c3dafe;
         }
 
-        .alert-success {
-            background-color: #e6f9ec;
-            color: #155724;
-            border-color: #bef2c4;
+        .or-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #718096;
+            margin: 25px 0;
         }
 
-        .affinidi-login-div {
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #cbd5e0;
+            margin: 0 15px;
+        }
+
+        .affinidi-login-button-container {
+            text-align: center;
             margin-bottom: 20px;
+            margin: 0 auto;
         }
 
         .affinidi-login-dark-l {
-            /*  --- AFFINIDI LOGIN BUTTON STYLES - DO NOT MODIFY --- */
+            /*  --- AFFINIDI LOGIN BUTTON STYLES - ORIGINAL CSS --- */
             border: 0;
             width: 224px;
             height: 56px;
@@ -141,106 +247,104 @@
             color: #ffffff;
         }
 
-
-        .explore-links {
-            margin-top: 20px;
-        }
-
-        .explore-links a {
-            /* Apply CIS Button Styles to Explore Links */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            /* Match CIS button padding */
-            background-color: #0694a2;
-            /* Teal button color - CIS style */
-            color: #ffffff;
-            /* White text - CIS style */
-            text-decoration: none;
-            border-radius: 8px;
-            /* Rounded corners - CIS style */
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            /* Match CIS button font size */
-            font-weight: 600;
-            /* Match CIS button font weight */
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            /* Hover/active effects */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-            /* Subtle shadow - CIS style */
-            margin-bottom: 15px;
-            /* Keep spacing between links */
+        /* --- Footer Section --- */
+        .footer {
             text-align: center;
-            /* Ensure text is centered */
+            padding: 20px;
+            font-size: 0.9em;
+            color: #718096;
+            margin-top: 30px;
+            width: 100%;
         }
 
-        .explore-links a:hover {
-            background-color: #047a85;
-            /* Darker teal on hover - CIS style */
-            transform: translateY(-2px);
-            /* Slight lift on hover - CIS style */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Increased shadow on hover - CIS style */
+        .footer a {
+            color: #0694a2;
+            text-decoration: none;
         }
 
-        .explore-links a:active {
-            background-color: #03606b;
-            /* Even darker teal on active - CIS style */
-            transform: translateY(0);
-            /* Reset transform on active - CIS style */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-            /* Reset shadow on active - CIS style */
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Responsive Design (adjust container for smaller screens) --- */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                width: 100%;
+                margin-top: 10px;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .header-logo {
+                font-size: 2.2em;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
     <div class="container">
-        <div class="header-body">
-            <h1>PHP Demo App</h1>
-        </div>
+        <header class="header">
+            <h1 class="header-logo">Affinidi <span style="color:#3b82f6;">Reference App</span></h1>
+            <p class="header-tagline">Unlock Potential of Decentralised Technology</p>
+        </header>
 
-        <div class="card-body">
-            <h2 class="h4 mb-1">Sign in</h2>
-            <hr class="mt-2">
-            @if (session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-            @endif
-            @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-            @endif
+        <main class="main-content">
+            <div class="login-form-section">
+                <h2>Login</h2>
 
-            <div class="affinidi-login-div">
-                <a class="affinidi-login-dark-l" href="/login/affinidi">
-                    Affinidi Login
-                </a>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+                <div class="form-actions">
+                    <button type="submit" class="login-button">
+                        LOGIN <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                    </button>
+                </div>
 
-        <div class="card-body">
-            <h2 class="h4 mb-1">Explore More</h2>
-            <hr class="mt-2">
-            <div class="explore-links">
-                <a href="/cis">
-                    Affinidi Credential Issuance
-                </a>
-                <a href="/iota">
-                    Affinidi Iota Framework
-                </a>
-                <a href="/pdf">
-                    PDF Generation
-                </a>
-                <a href="/verify">
-                    Verify Final Check Report
-                </a>
+
+                <div class="register-section">
+                    <p class="register-text">Don't have an account?</p>
+                    <a href="/register" class="register-button">REGISTER NOW</a>
+                </div>
+
+                <div class="or-divider">OR</div>
+
+                <div class="affinidi-login-button-container">
+                    <a class="affinidi-login-dark-l" href="/login/affinidi">
+                        Affinidi Login
+                    </a>
+                </div>
+
+
             </div>
-        </div>
+        </main>
     </div>
+
+    <footer class="footer">
+        <p>Drop us a note to learn more at <a href="mailto:support@affinidi.com">support@affinidi.com</a> </p>
+        <p>&copy; 2025 Affinidi Private Limited. All rights reserved.</p>
+    </footer>
+
 </body>
 
 </html>
