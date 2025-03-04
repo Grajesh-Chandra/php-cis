@@ -174,6 +174,24 @@
             color: #991B1B;
         }
 
+        .status-message .message-content pre {
+            max-height: 200px;
+            /* Adjust as needed */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+            /* Wrap long lines */
+            word-wrap: break-word;
+            /* Break words if necessary */
+            margin-top: 10px;
+            /* Add some space above the pre element */
+            margin-bottom: 0;
+            /* Reset default bottom margin of pre */
+        }
+
         .spinner {
             width: 24px;
             height: 24px;
@@ -322,7 +340,7 @@
         async function handleSubmit(e) {
             e.preventDefault();
             const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
+            formData.append('pdf_file', fileInput.files[0]); // Corrected line: using 'pdf_file'
 
             submitBtn.disabled = true;
             spinner.style.display = 'block';
@@ -341,12 +359,7 @@
                 const data = await response.json(); // Parse JSON response from API
 
                 if (response.ok) {
-                    showSuccess(data.message); // Display success message from API
-                    if (data.status) { // Check if status is returned and display it
-                        showSuccess(data.message + `<br><b>Status:</b> ${data.status}`); // Append status to message
-                    } else {
-                        showSuccess(data.message);
-                    }
+                    showSuccess(data.message, data); // Pass data to showSuccess
                 } else {
                     showError(data.error || 'Verification failed. Please try again.'); // Display error message from API or generic error
                 }
@@ -363,14 +376,44 @@
             }
         }
 
-        function showSuccess(message) {
+        function showSuccess(message, data) { // Modified to accept data
+            let detailedMessage = message + `<br><br><b>Extracted PDF Content:</b><br><pre style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;">${data.pdf_content}</pre>`;
+
+            if (data.attachments && data.attachments.length > 0) {
+                let attachmentsHTML = "<br><br><b>Attachments:</b><ul>";
+                data.attachments.forEach(attachment => {
+                    attachmentsHTML += `<li><b>${attachment.filename}</b> (Type: ${attachment.mime_type || 'application/verifiable-credential+json'})<br>`;
+
+                    if (attachment.filename.toLowerCase().endsWith('.json')) { // Check for .json extension
+                        try {
+                            const decodedJSON = JSON.stringify(JSON.parse(atob(attachment.content_base64)), null, 2); // Decode base64 and pretty-print JSON
+                            attachmentsHTML += `<pre style="max-height: 150px; overflow-y: auto; border: 1px solid #eee; padding: 5px; background-color: #f9f9f9; font-size: 0.8em;">${decodedJSON}</pre>`;
+                        } catch (e) {
+                            attachmentsHTML += `<span style="color: orange;">Could not decode/display JSON content.</span>`; // Error message if JSON parsing fails
+                            console.error("JSON Decode Error for attachment:", attachment.filename, e);
+                        }
+                    } else if (attachment.content_encoding === 'base64') {
+                        attachmentsHTML += `<span style="font-size: 0.9em;">Attachment content is base64 encoded binary data and cannot be directly displayed here.</span>`;
+                    } else if (attachment.content) {
+                        attachmentsHTML += `<pre style="max-height: 100px; overflow-y: auto; border: 1px solid #eee; padding: 5px; background-color: #f9f9f9; font-size: 0.8em;">${attachment.content}</pre>`;
+                    } else {
+                        attachmentsHTML += "No text content extracted.";
+                    }
+                    attachmentsHTML += "</li>";
+                });
+                attachmentsHTML += "</ul>";
+                detailedMessage += attachmentsHTML; // Append attachments to the main message
+            }
+
+
             statusMessage.className = 'status-message success active';
             statusMessage.innerHTML = `
                 <i data-feather="check-circle"></i>
-                <div class="message-content">${message}</div>
+                <div class="message-content">${detailedMessage}</div>
             `;
             feather.replace();
         }
+
 
         function showError(message) {
             statusMessage.className = 'status-message error active';
