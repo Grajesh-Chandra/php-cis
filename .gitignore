@@ -41,4 +41,3 @@ yarn-error.log
 .DS_Store
 temp.txt
 **/pst_token.txt
-public/attachments/*

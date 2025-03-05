@@ -146,7 +146,7 @@ class GeneratePdfController extends Controller
 
             // Create directory if not exists with proper permissions
             if (!file_exists($tempDir)) {
-                mkdir($tempDir, 0755, true);
+                mkdir($tempDir, 0775, true);
                 Log::info('Temp directory created: ' . $tempDir);
             } else {
                 Log::info('Temp directory already exists: ' . $tempDir);
@@ -155,7 +155,7 @@ class GeneratePdfController extends Controller
             $inputPdf = $tempDir . 'base.pdf';
 
             Log::info('Attempting to save base PDF to: ' . $inputPdf);
-            $pdf->Output($inputPdf, 'S');
+            $pdf->Output($inputPdf, 'F');
             Log::info('Output() command executed.');
 
             if (!file_exists($inputPdf)) {
