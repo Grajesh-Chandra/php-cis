@@ -52,6 +52,32 @@ php artisan serve
 
 Then visit: http://localhost:8010/cis
 
+
+## Setup python for executing the python script
+
+1. Install python
+
+```
+brew install python
+
+```
+
+2. Create virtual environment : search for virtual environment in visual studio for " Python: create envioronment"
+
+```
+Create via .venv
+```
+
+3. Close your terminal and open a new terminal, it will have (.venv) in it.
+
+4. Install python library
+
+```
+pip install pypdf
+
+```
+
+
 ## Set up your Affinidi Login configuration
 
 1. Follow [this guide](./docs/setup-login-config.md) to set up your login configuration with callback URL as `http://localhost:8010/login/affinidi/callback`

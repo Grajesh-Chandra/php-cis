@@ -1,12 +1,1 @@
-1. Install python
-    brew install python
-
-2. create virtual Environment
-    create .venv
-
-3. kill your terminal
-
-4. open new terminal
-    .venv
-
-5. pip install pypdf
+This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and reproducing the content of this notice when they are further distributing this code.
