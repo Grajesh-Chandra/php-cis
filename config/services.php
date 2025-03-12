@@ -36,4 +36,12 @@ return [
         'avvanz_query_id' => env('IOTA_AVVANZ_CREDENTIAL_QUERY'),
     ],
 
+    'affinidi_sign_credentials' => [
+        'walletId' => env('WALLET_ID'),
+        'holderDID' => env('HOLDER_DID'),
+        'pdf_signature_json' => env('PDF_SIGNATURE_JSON'),
+        'pdf_signature_jsonld' => env('PDF_SIGNATURE_JSONLD'),
+        'pdf_signature_type_id' => env('PDF_SIGNATURE_TYPE_ID'),
+    ],
+
 ];

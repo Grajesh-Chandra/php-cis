@@ -1,32 +1,37 @@
 {
-  "credential": {
     "@context": [
-      "https://www.w3.org/2018/credentials/v1",
-      "https://schema.affinidi.io/TpdfSignatureV1R0.jsonld"
+        "https://www.w3.org/2018/credentials/v1",
+        "https://schema.affinidi.io/TpdfSignatureV1R0.jsonld"
     ],
-    "id": "claimId:36ea54cd5f4d6c11eca17651",
-    "type": ["VerifiableCredential", "TpdfSignatureV1R0"],
+    "id": "claimId:9a4d3176e7a27db67ff4ae8d",
+    "type": [
+        "VerifiableCredential",
+        "TpdfSignatureV1R0"
+    ],
     "holder": {
-      "id": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15"
+        "id": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15"
     },
     "credentialSubject": {
-      "@type": ["VerifiableCredential", "TpdfSignatureV1R0"],
-      "hashWithoutAttachments": "97874e542de2e578d1fdc78e60685937889c0282e6645848ce81aae97947cab7",
-      "hashWithAttachment": "personalInfo.json"
+        "@type": [
+            "VerifiableCredential",
+            "TpdfSignatureV1R0"
+        ],
+        "hashWithoutAttachments": "df81da05f865001bf40bf1476692a5710a7bc91ae95442716fadedf18762fecd",
+        "hashWithAttachment": "personalInfo.json",
+        "orderId": "123456"
     },
     "credentialSchema": {
-      "id": "https://schema.affinidi.io/TpdfSignatureV1R0.json",
-      "type": "JsonSchemaValidator2018"
+        "id": "https://schema.affinidi.io/TpdfSignatureV1R0.json",
+        "type": "JsonSchemaValidator2018"
     },
-    "issuanceDate": "2025-03-10T04:53:18.974Z",
-    "expirationDate": "2030-03-09T10:23:18.621Z",
+    "issuanceDate": "2025-03-12T07:53:05.630Z",
+    "expirationDate": "2030-12-31T23:59:59.000Z",
     "issuer": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
     "proof": {
-      "type": "EcdsaSecp256k1Signature2019",
-      "created": "2025-03-10T04:53:19Z",
-      "verificationMethod": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC#zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
-      "proofPurpose": "assertionMethod",
-      "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..rH1KnWAYTqeCF9SZEOChufJNo9BeRjfZxrHppebVS0oW23Yf9qiX8XfbSVqSBYoIyTMjJ8pui7CKSBc3chknfQ"
+        "type": "EcdsaSecp256k1Signature2019",
+        "created": "2025-03-12T07:53:05Z",
+        "verificationMethod": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC#zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
+        "proofPurpose": "assertionMethod",
+        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..pKQcj2HdUAL7R3o0TI8Q0jB88rXk_afYoGFmacgwQ94oAnSoVlO7JLF3gT5oUIvVDyuCPMtgssyLr4HwmEsH3g"
     }
-  }
 }
