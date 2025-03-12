@@ -174,23 +174,50 @@
             color: #991B1B;
         }
 
-        .status-message .message-content pre {
+        /* CSS for PDF Content <pre> - using CLASS SELECTOR now */
+        .pdf-content-pre {
             max-height: 200px;
-            /* Adjust as needed */
             overflow-y: auto;
-            /* Enable vertical scrolling */
             border: 1px solid #ccc;
             padding: 10px;
             background-color: #f9f9f9;
             white-space: pre-wrap;
-            /* Wrap long lines */
             word-wrap: break-word;
-            /* Break words if necessary */
             margin-top: 10px;
-            /* Add some space above the pre element */
-            margin-bottom: 0;
-            /* Reset default bottom margin of pre */
+            margin-bottom: 0px;
+            font-size: 0.9em;
         }
+
+        /* CSS for JSON Attachment Content <pre> - using CLASS SELECTOR now */
+        .json-attachment-pre {
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            padding: 5px;
+            background-color: #f9f9f9;
+            font-size: 0.8em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+
+        /* CSS for PDF Content Hash <pre> */
+        .hash-pre {
+            font-size: 0.85em;
+            /* Slightly smaller font for hash */
+            background-color: #f0f0f0;
+            /* Light gray background */
+            padding: 8px;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            /* Enable horizontal scroll if hash is very long */
+            word-break: break-all;
+            /* Break long hash string if needed */
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
 
         .spinner {
             width: 24px;
@@ -257,7 +284,7 @@
         <form id="verificationForm" enctype="multipart/form-data">
             @csrf
             <div class="upload-section" id="dropZone">
-                <input type="file" class="upload-input" id="fileInput" name="file" accept=".pdf" required>
+                <input type="file" class="upload-input" id="fileInput" name="pdf_file" accept=".pdf" required>
                 <label for="fileInput" class="upload-label">
                     <div class="upload-icon">
                         <i data-feather="upload"></i>
@@ -340,7 +367,7 @@
         async function handleSubmit(e) {
             e.preventDefault();
             const formData = new FormData();
-            formData.append('pdf_file', fileInput.files[0]); // Corrected line: using 'pdf_file'
+            formData.append('pdf_file', fileInput.files[0]);
 
             submitBtn.disabled = true;
             spinner.style.display = 'block';
@@ -356,55 +383,58 @@
                     }
                 });
 
-                const data = await response.json(); // Parse JSON response from API
+                const data = await response.json();
 
                 if (response.ok) {
-                    showSuccess(data.message, data); // Pass data to showSuccess
+                    showSuccess(data.message, data);
                 } else {
-                    showError(data.error || 'Verification failed. Please try again.'); // Display error message from API or generic error
+                    showError(data.error || 'Verification failed. Please try again.');
                 }
 
             } catch (error) {
-                showError('An error occurred during verification. Please check your connection and try again.'); // Generic error for network issues etc.
-                console.error('API Error:', error); // Log error for debugging
+                showError('An error occurred during verification. Please check your connection and try again.');
+                console.error('API Error:', error);
             } finally {
                 submitBtn.disabled = false;
                 spinner.style.display = 'none';
                 submitBtn.querySelector('span').textContent = 'Verify Document';
-                form.reset(); // Reset the form after submission (clears file input)
-                fileInfo.innerHTML = ''; // Clear file info display
+                form.reset();
+                fileInfo.innerHTML = '';
             }
         }
 
-        function showSuccess(message, data) { // Modified to accept data
-            let detailedMessage = message + `<br><br><b>Extracted PDF Content:</b><br><pre style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; background-color: #f9f9f9;">${data.pdf_content}</pre>`;
+        function showSuccess(message, data) {
+            let detailedMessage = message + `<br><br><b>Extracted PDF Content:</b><br><pre class="pdf-content-pre">${data.pdf_content}</pre>`;
+
+            // Display PDF Content Hash
+            detailedMessage += `<br><b>PDF Content Hash (SHA-256):</b><br><pre class="hash-pre">${data.pdf_content_hash || 'Not Calculated'}</pre>`;
+
 
             if (data.attachments && data.attachments.length > 0) {
                 let attachmentsHTML = "<br><br><b>Attachments:</b><ul>";
                 data.attachments.forEach(attachment => {
-                    attachmentsHTML += `<li><b>${attachment.filename}</b> (Type: ${attachment.mime_type || 'application/verifiable-credential+json'})<br>`;
+                    attachmentsHTML += `<li><b>${attachment.filename}</b> (Type: ${attachment.mime_type || 'application/octet-stream'})<br>`;
 
-                    if (attachment.filename.toLowerCase().endsWith('.json')) { // Check for .json extension
+                    if (attachment.filename.toLowerCase().endsWith('.json')) {
                         try {
-                            const decodedJSON = JSON.stringify(JSON.parse(atob(attachment.content_base64)), null, 2); // Decode base64 and pretty-print JSON
-                            attachmentsHTML += `<pre style="max-height: 150px; overflow-y: auto; border: 1px solid #eee; padding: 5px; background-color: #f9f9f9; font-size: 0.8em;">${decodedJSON}</pre>`;
+                            const decodedJSON = JSON.stringify(JSON.parse(atob(attachment.content_base64)), null, 2);
+                            attachmentsHTML += `<pre class="json-attachment-pre">${decodedJSON}</pre>`;
                         } catch (e) {
-                            attachmentsHTML += `<span style="color: orange;">Could not decode/display JSON content.</span>`; // Error message if JSON parsing fails
+                            attachmentsHTML += `<span style="color: orange;">Could not decode/display JSON content.</span>`;
                             console.error("JSON Decode Error for attachment:", attachment.filename, e);
                         }
                     } else if (attachment.content_encoding === 'base64') {
                         attachmentsHTML += `<span style="font-size: 0.9em;">Attachment content is base64 encoded binary data and cannot be directly displayed here.</span>`;
                     } else if (attachment.content) {
-                        attachmentsHTML += `<pre style="max-height: 100px; overflow-y: auto; border: 1px solid #eee; padding: 5px; background-color: #f9f9f9; font-size: 0.8em;">${attachment.content}</pre>`;
+                        attachmentsHTML += `<pre class="json-attachment-pre">${attachment.content}</pre>`;
                     } else {
                         attachmentsHTML += "No text content extracted.";
                     }
                     attachmentsHTML += "</li>";
                 });
                 attachmentsHTML += "</ul>";
-                detailedMessage += attachmentsHTML; // Append attachments to the main message
+                detailedMessage += attachmentsHTML;
             }
-
 
             statusMessage.className = 'status-message success active';
             statusMessage.innerHTML = `

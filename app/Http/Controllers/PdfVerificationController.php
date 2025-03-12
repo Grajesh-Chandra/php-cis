@@ -80,6 +80,7 @@ class PdfVerificationController extends Controller
                 'message' => 'PDF content and attachments extracted successfully.',
                 'pdf_content' => $extractionData['pdf_content'] ?? '', // Use null coalescing operator to avoid errors if keys are missing
                 'attachments' => $extractionData['attachments'] ?? [],
+                'pdf_content_hash' => $extractionData['pdf_content_hash'] ?? ''
             ]);
         } catch (\Exception $e) {
             Log::error('Error executing Python script or processing output: ' . $e->getMessage(), ['exception' => $e]);

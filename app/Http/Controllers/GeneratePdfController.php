@@ -38,8 +38,11 @@ class GeneratePdfController extends Controller
         $outputPdf = null;
         $finalPdf = null;
         $tempDir = storage_path('app/temp/');
+        $pdfContentHash = null; // Renamed variable to pdfContentHash for clarity
 
         try {
+
+            // Step 1: Generate the base PDF (without attachments)
             $pdf = $this->generateBasePdf();
 
             if (!file_exists($tempDir)) {
@@ -53,20 +56,37 @@ class GeneratePdfController extends Controller
             if (!file_exists($inputPdf)) {
                 throw new \Exception("Failed to save base PDF");
             }
-
-            // Step1: Generate the PDF Signature and attach the signature to the PDF
-            $pdfSignatureResponse = $this->hash_pdf_content_excluding_attachments();
-            if ($pdfSignatureResponse->getStatusCode() !== 200) {
-                throw new \Exception("Failed to generate PDF hash");
+            // Step 2: Calculate the hash of the base PDF CONTENT (text only, no attachments)
+            $pythonHashScriptPath = base_path('public/scripts/calculate_pdf_hash.py');
+            if (!file_exists($pythonHashScriptPath)) {
+                throw new \Exception("Python hash script not found: $pythonHashScriptPath");
             }
-            $pdfsignature = json_decode($pdfSignatureResponse->getContent(), true)['hash'];
-            Log::info('PDF Signature generated successfully', ['signature' => $pdfsignature]);
 
-            $walletId= config('services.affinidi_sign_credentials.walletId');
-            $holderDID= config('services.affinidi_sign_credentials.holderDID');
-            $pdf_signature_json= config('services.affinidi_sign_credentials.pdf_signature_json');
-            $pdf_signature_jsonld= config('services.affinidi_sign_credentials.pdf_signature_jsonld');
-            $pdf_signature_type_id= config('services.affinidi_sign_credentials.pdf_signature_type_id');
+            $hashCommand = [
+                base_path('.venv/bin/python3'),
+                $pythonHashScriptPath,
+                $inputPdf,
+            ];
+
+            $hashProcess = new Process($hashCommand);
+            $hashProcess->run();
+
+            if (!$hashProcess->isSuccessful()) {
+                Log::error('Python hash script failed: ' . $hashProcess->getErrorOutput());
+                throw new \Exception("Failed to calculate PDF Content hash using Python script: " . $hashProcess->getErrorOutput());
+            }
+
+            $pdfContentHash = trim($hashProcess->getOutput()); // Get the hash value from the output, renamed variable
+            Log::info('Calculated PDF Content Hash successfully', ['pdf_content_hash' => $pdfContentHash]); // Updated log message and variable name
+
+
+            // Step3: Generate the PDF Signature & Store it in public/attachments folder as PDFSignature.json
+
+            $walletId = config('services.affinidi_sign_credentials.walletId');
+            $holderDID = config('services.affinidi_sign_credentials.holderDID');
+            $pdf_signature_json = config('services.affinidi_sign_credentials.pdf_signature_json');
+            $pdf_signature_jsonld = config('services.affinidi_sign_credentials.pdf_signature_jsonld');
+            $pdf_signature_type_id = config('services.affinidi_sign_credentials.pdf_signature_type_id');
 
             $unsignedRequest = [
                 "unsignedCredentialParams" => [
@@ -75,16 +95,14 @@ class GeneratePdfController extends Controller
                     "typeName" => $pdf_signature_type_id,
                     "credentialSubject" => [
                         "@type" => ["VerifiableCredential", "TpdfSignatureV1R0"],
-                        "hashWithoutAttachments" => $pdfsignature,
-                        "hashWithAttachment" => "personalInfo.json",
+                        "hashWithoutAttachments" => $pdfContentHash, // Use the calculated content hash here, updated variable name
+                        "hashWithAttachment" => "personalInfo.json", // Assuming this is still needed - adjust as necessary
                         "orderId" => "123456",
                     ],
                     "holderDid" => $holderDID,
                     "expiresAt" => "2030-12-31T23:59:59Z",
                 ]
             ];
-
-            Log::info('Signing the PDF Signature', ['unsignedRequest' => $unsignedRequest]);
 
             $signedRequest = AffinidiServices::SignCredentials($walletId, $unsignedRequest);
 
@@ -104,7 +122,7 @@ class GeneratePdfController extends Controller
 
             file_put_contents($signatureFilePath, json_encode($signature, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
-            # step2: Attach the signature to the PDF
+            # step4: Attach the PDFSignature and Verifiable Credentials  to the PDF
             $attachmentsDir = public_path('attachments/');
             $jsonFiles = glob($attachmentsDir . '*.json');
 

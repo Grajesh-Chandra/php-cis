@@ -3,17 +3,20 @@ import json
 from pypdf import PdfReader
 import os
 import base64
+import hashlib  # Import the hashlib library for hashing
 
 
 def extract_pdf_data(pdf_path):
     """
     Extracts text content and attachment information from a PDF file.
+    Calculates SHA-256 hash of the PDF content (text only, excluding attachments).
 
     Args:
         pdf_path (str): Path to the PDF file.
 
     Returns:
-        dict: A dictionary containing 'pdf_content' (text) and 'attachments' (list of attachment info).
+        dict: A dictionary containing 'pdf_content' (text), 'attachments' (list of attachment info),
+              and 'pdf_content_hash' (SHA-256 hash of pdf_content).
               Returns None and prints an error to stderr if parsing fails.
     """
     pdf_file = open(pdf_path, "rb")
@@ -28,6 +31,10 @@ def extract_pdf_data(pdf_path):
         pdf_text_content = ""
         for page in reader.pages:
             pdf_text_content += page.extract_text()
+
+        # Calculate SHA-256 hash of the PDF content
+        pdf_content_hash = hashlib.sha256(pdf_text_content.encode("utf-8")).hexdigest()
+        print(f"SHA-256 hash of PDF content: {pdf_content_hash}", file=sys.stderr)
 
         attachments_data = []
 
@@ -70,7 +77,7 @@ def extract_pdf_data(pdf_path):
                     print(
                         f"Unexpected attachment content type for {attachment_filename}: {type(data)}",
                         file=sys.stderr,
-                    )  # Log type to stderr
+                    )  # Log details to stderr
 
                 attachment_info = {
                     "filename": attachment_filename,
@@ -81,7 +88,11 @@ def extract_pdf_data(pdf_path):
                 attachments_data.append(attachment_info)
 
         pdf_file.close()
-        return {"pdf_content": pdf_text_content, "attachments": attachments_data}
+        return {
+            "pdf_content": pdf_text_content,
+            "attachments": attachments_data,
+            "pdf_content_hash": pdf_content_hash,
+        }  # Include hash in response
 
     except Exception as e:
         pdf_file.close()
