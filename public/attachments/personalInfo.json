@@ -1,242 +1,240 @@
 {
-  "credential": {
-    "credentialSchema": {
-      "type": "AvvanzDigitalCredential",
-      "id": "https://schema.affinidi.io/personalInfoV1R0.json"
+  "credentialSchema": {
+    "type": "AvvanzDigitalCredential",
+    "id": "https://schema.affinidi.io/personalInfoV1R0.json"
+  },
+  "credentialSubject": {
+    "employmentPerformanceDetails": {
+      "employmentPerformance": [
+        {
+          "country": "USA",
+          "referenceRelationship": "Supervisor",
+          "city": "Los Angeles",
+          "companyName": "Tech Corp",
+          "postalCode": "90001",
+          "supervisorMiddleName": "",
+          "supervisorEmail": "carol.white@techcorp.com",
+          "whenToContact": "Anytime",
+          "bestTimeToCall": "10 AM - 4 PM",
+          "supervisorLastName": "White",
+          "isCurrent": "No",
+          "supervisorFirstName": "Carol",
+          "addressLine1": "789 Tech Ave",
+          "stateRegion": "CA",
+          "addressLine2": "",
+          "canCommunicate": "Yes",
+          "position": "Junior Developer",
+          "supervisorPosition": "Team Lead",
+          "contactNo": "123-456-7890"
+        },
+        {
+          "country": "USA",
+          "referenceRelationship": "Supervisor",
+          "city": "Mountain View",
+          "companyName": "Innovate Inc",
+          "postalCode": "94043",
+          "supervisorMiddleName": "",
+          "supervisorEmail": "david.black@innovateinc.com",
+          "whenToContact": "After 5 PM",
+          "bestTimeToCall": "10 AM - 4 PM",
+          "supervisorLastName": "Black",
+          "isCurrent": "Yes",
+          "supervisorFirstName": "David",
+          "addressLine1": "321 Innovation Dr",
+          "stateRegion": "CA",
+          "addressLine2": "",
+          "canCommunicate": "Yes",
+          "position": "Senior Developer",
+          "supervisorPosition": "Project Manager",
+          "contactNo": "987-654-3210"
+        }
+      ]
     },
-    "credentialSubject": {
-      "employmentPerformanceDetails": {
-        "employmentPerformance": [
+    "addressDetails": {
+      "address": [
+        {
+          "neighborContactNo": "444-555-6666",
+          "country": "USA",
+          "city": "New York",
+          "houseOwnerEmail": "jane.smith@example.com",
+          "postalCode": "10001",
+          "houseOwnerContactNo": "111-222-3333",
+          "stateOrRegion": "NY",
+          "houseOwnerName": "Jane Smith",
+          "neighborEmail": "emily.davis@example.com",
+          "neighborName": "Emily Davis",
+          "stayDateFrom": "2015-06-01",
+          "stayDateTo": "2020-05-31",
+          "addressLine1": "123 Main St",
+          "addressLine2": "Apt 4B"
+        },
+        {
+          "neighborContactNo": "000-111-2222",
+          "country": "USA",
+          "city": "San Francisco",
+          "houseOwnerEmail": "robert.brown@example.com",
+          "postalCode": "94107",
+          "houseOwnerContactNo": "777-888-9999",
+          "stateOrRegion": "CA",
+          "houseOwnerName": "Robert Brown",
+          "neighborEmail": "michael.green@example.com",
+          "neighborName": "Michael Green",
+          "stayDateFrom": "2020-06-01",
+          "stayDateTo": "Present",
+          "addressLine1": "456 Elm St",
+          "addressLine2": ""
+        }
+      ]
+    },
+    "educationDetails": [
+      {
+        "education": [
           {
-            "country": "USA",
-            "referenceRelationship": "Supervisor",
-            "city": "Los Angeles",
-            "companyName": "Tech Corp",
-            "postalCode": "90001",
-            "supervisorMiddleName": "",
-            "supervisorEmail": "carol.white@techcorp.com",
-            "whenToContact": "Anytime",
-            "bestTimeToCall": "10 AM - 4 PM",
-            "supervisorLastName": "White",
-            "isCurrent": "No",
-            "supervisorFirstName": "Carol",
-            "addressLine1": "789 Tech Ave",
+            "modeOfStudy": "Full-time",
+            "isGraduated": "Yes",
+            "city": "Stanford",
+            "postalCode": "94305",
+            "dateFrom": "2010-09-01",
+            "dateGraduated": "2014-06-30",
+            "institutionContactNo": "650-723-2300",
+            "institutionEmail": "admissions@stanford.edu",
+            "institutionName": "Stanford University",
+            "dateTo": "2014-06-30",
+            "addressLine1": "450 Serra Mall",
             "stateRegion": "CA",
-            "addressLine2": "",
-            "canCommunicate": "Yes",
-            "position": "Junior Developer",
-            "supervisorPosition": "Team Lead",
-            "contactNo": "123-456-7890"
+            "addressLine2": ""
           },
           {
-            "country": "USA",
-            "referenceRelationship": "Supervisor",
-            "city": "Mountain View",
-            "companyName": "Innovate Inc",
-            "postalCode": "94043",
-            "supervisorMiddleName": "",
-            "supervisorEmail": "david.black@innovateinc.com",
-            "whenToContact": "After 5 PM",
-            "bestTimeToCall": "10 AM - 4 PM",
-            "supervisorLastName": "Black",
-            "isCurrent": "Yes",
-            "supervisorFirstName": "David",
-            "addressLine1": "321 Innovation Dr",
-            "stateRegion": "CA",
-            "addressLine2": "",
-            "canCommunicate": "Yes",
-            "position": "Senior Developer",
-            "supervisorPosition": "Project Manager",
-            "contactNo": "987-654-3210"
-          }
-        ]
-      },
-      "addressDetails": {
-        "address": [
-          {
-            "neighborContactNo": "444-555-6666",
-            "country": "USA",
-            "city": "New York",
-            "houseOwnerEmail": "jane.smith@example.com",
-            "postalCode": "10001",
-            "houseOwnerContactNo": "111-222-3333",
-            "stateOrRegion": "NY",
-            "houseOwnerName": "Jane Smith",
-            "neighborEmail": "emily.davis@example.com",
-            "neighborName": "Emily Davis",
-            "stayDateFrom": "2015-06-01",
-            "stayDateTo": "2020-05-31",
-            "addressLine1": "123 Main St",
-            "addressLine2": "Apt 4B"
-          },
-          {
-            "neighborContactNo": "000-111-2222",
-            "country": "USA",
-            "city": "San Francisco",
-            "houseOwnerEmail": "robert.brown@example.com",
-            "postalCode": "94107",
-            "houseOwnerContactNo": "777-888-9999",
-            "stateOrRegion": "CA",
-            "houseOwnerName": "Robert Brown",
-            "neighborEmail": "michael.green@example.com",
-            "neighborName": "Michael Green",
-            "stayDateFrom": "2020-06-01",
-            "stayDateTo": "Present",
-            "addressLine1": "456 Elm St",
+            "modeOfStudy": "Part-time",
+            "isGraduated": "Yes",
+            "city": "Cambridge",
+            "postalCode": "02138",
+            "dateFrom": "2014-09-01",
+            "dateGraduated": "2016-06-30",
+            "institutionContactNo": "617-495-1000",
+            "institutionEmail": "admissions@harvard.edu",
+            "institutionName": "Harvard University",
+            "dateTo": "2016-06-30",
+            "addressLine1": "Massachusetts Hall",
+            "stateRegion": "MA",
             "addressLine2": ""
           }
         ]
-      },
-      "educationDetails": [
-        {
-          "education": [
-            {
-              "modeOfStudy": "Full-time",
-              "isGraduated": "Yes",
-              "city": "Stanford",
-              "postalCode": "94305",
-              "dateFrom": "2010-09-01",
-              "dateGraduated": "2014-06-30",
-              "institutionContactNo": "650-723-2300",
-              "institutionEmail": "admissions@stanford.edu",
-              "institutionName": "Stanford University",
-              "dateTo": "2014-06-30",
-              "addressLine1": "450 Serra Mall",
-              "stateRegion": "CA",
-              "addressLine2": ""
-            },
-            {
-              "modeOfStudy": "Part-time",
-              "isGraduated": "Yes",
-              "city": "Cambridge",
-              "postalCode": "02138",
-              "dateFrom": "2014-09-01",
-              "dateGraduated": "2016-06-30",
-              "institutionContactNo": "617-495-1000",
-              "institutionEmail": "admissions@harvard.edu",
-              "institutionName": "Harvard University",
-              "dateTo": "2016-06-30",
-              "addressLine1": "Massachusetts Hall",
-              "stateRegion": "MA",
-              "addressLine2": ""
-            }
-          ]
-        }
-      ],
-      "professionalQualificationDetails": {
-        "professionalQualification": [
-          {
-            "country": "USA",
-            "certificateIssuingAuthority": "Oracle",
-            "qualificationAttained": "Oracle Certified Professional, Java SE 8 Programmer",
-            "certificateNumber": "OCJP123456789",
-            "dateGranted": "2015-08-15"
-          },
-          {
-            "country": "USA",
-            "certificateIssuingAuthority": "Microsoft",
-            "qualificationAttained": "Microsoft Certified: Azure Fundamentals",
-            "certificateNumber": "AZF987654321",
-            "dateGranted": "2020-03-20"
-          }
-        ]
-      },
-      "personalInformation": {
-        "lastName": "Doe",
-        "notes": "Available for immediate joining.",
-        "gender": "Male",
-        "primaryIdCard2": "Driver's License",
-        "photo": "https://example.com/photos/john_doe.jpg",
-        "alterPhoneNo": "098-765-4321",
-        "phoneNo": "123-456-7890",
-        "civilStatus": "Married",
-        "firstName": "John",
-        "primaryIdCardNo": "A12345678",
-        "positionApplied": "Software Engineer",
-        "primaryIdCard": "Passport",
-        "aka": "Johnny",
-        "middleName": "Michael",
-        "email": "john.doe@example.com",
-        "primaryIdCardNo2": "D987654321"
-      },
-      "employmentDetails": {
-        "employment": [
-          {
-            "annualSalary": "60000",
-            "country": "USA",
-            "city": "Los Angeles",
-            "companyName": "Tech Corp",
-            "postalCode": "90001",
-            "employmentStatus": "Full-time",
-            "underAgency": "No",
-            "hr_first_name": "Alice",
-            "companyEmail": "hr@techcorp.com",
-            "addressLine1": "789 Tech Ave",
-            "stateRegion": "CA",
-            "canCommunicate": "Yes",
-            "addressLine2": "",
-            "hr_last_name": "Johnson",
-            "hr_contact_no": "123-456-7890",
-            "salaryCurrency": "USD",
-            "whenToContact": "Anytime",
-            "dateFrom": "2016-07-01",
-            "agencyName": "",
-            "eligibleForRehire": "Yes",
-            "reasonForLeaving": "Career Growth",
-            "isCurrent": "No",
-            "dateTo": "2018-06-30",
-            "hr_email": "alice.johnson@techcorp.com",
-            "position": "Junior Developer",
-            "hr_personnel_position": "HR Manager"
-          },
-          {
-            "annualSalary": "90000",
-            "country": "USA",
-            "city": "Mountain View",
-            "companyName": "Innovate Inc",
-            "postalCode": "94043",
-            "employmentStatus": "Full-time",
-            "underAgency": "No",
-            "hr_first_name": "Bob",
-            "companyEmail": "hr@innovateinc.com",
-            "addressLine1": "321 Innovation Dr",
-            "stateRegion": "CA",
-            "canCommunicate": "Yes",
-            "addressLine2": "",
-            "hr_last_name": "Smith",
-            "hr_contact_no": "987-654-3210",
-            "salaryCurrency": "USD",
-            "whenToContact": "After 5 PM",
-            "dateFrom": "2018-07-01",
-            "agencyName": "",
-            "eligibleForRehire": "Yes",
-            "reasonForLeaving": "",
-            "isCurrent": "Yes",
-            "dateTo": "Present",
-            "hr_email": "bob.smith@innovateinc.com",
-            "position": "Senior Developer",
-            "hr_personnel_position": "HR Director"
-          }
-        ]
       }
-    },
-    "issuanceDate": "2025-03-10T13:04:10.127Z",
-    "holder": {
-      "id": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15"
-    },
-    "id": "claimId:ea1bf1242e47ca70",
-    "proof": {
-      "proofPurpose": "assertionMethod",
-      "type": "EcdsaSecp256k1Signature2019",
-      "verificationMethod": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC#zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
-      "created": "2025-03-10T13:04:57Z",
-      "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..wWIvun7i3MJ03d2vaaH0OCmkwlL-GZJ1gm1yR4ZOq2Ek2av3Yt49zj56dwo-aXckqM3UGbVJaCjI4vZObX3cnQ"
-    },
-    "type": ["VerifiableCredential", "AvvanzDigitalCredential"],
-    "@context": [
-      "https://www.w3.org/2018/credentials/v1",
-      "https://schema.affinidi.io/personalInfoV1R0.jsonld"
     ],
-    "issuer": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC"
-  }
+    "professionalQualificationDetails": {
+      "professionalQualification": [
+        {
+          "country": "USA",
+          "certificateIssuingAuthority": "Oracle",
+          "qualificationAttained": "Oracle Certified Professional, Java SE 8 Programmer",
+          "certificateNumber": "OCJP123456789",
+          "dateGranted": "2015-08-15"
+        },
+        {
+          "country": "USA",
+          "certificateIssuingAuthority": "Microsoft",
+          "qualificationAttained": "Microsoft Certified: Azure Fundamentals",
+          "certificateNumber": "AZF987654321",
+          "dateGranted": "2020-03-20"
+        }
+      ]
+    },
+    "personalInformation": {
+      "lastName": "Doe",
+      "notes": "Available for immediate joining.",
+      "gender": "Male",
+      "primaryIdCard2": "Driver's License",
+      "photo": "https://example.com/photos/john_doe.jpg",
+      "alterPhoneNo": "098-765-4321",
+      "phoneNo": "123-456-7890",
+      "civilStatus": "Married",
+      "firstName": "John",
+      "primaryIdCardNo": "A12345678",
+      "positionApplied": "Software Engineer",
+      "primaryIdCard": "Passport",
+      "aka": "Johnny",
+      "middleName": "Michael",
+      "email": "john.doe@example.com",
+      "primaryIdCardNo2": "D987654321"
+    },
+    "employmentDetails": {
+      "employment": [
+        {
+          "annualSalary": "60000",
+          "country": "USA",
+          "city": "Los Angeles",
+          "companyName": "Tech Corp",
+          "postalCode": "90001",
+          "employmentStatus": "Full-time",
+          "underAgency": "No",
+          "hr_first_name": "Alice",
+          "companyEmail": "hr@techcorp.com",
+          "addressLine1": "789 Tech Ave",
+          "stateRegion": "CA",
+          "canCommunicate": "Yes",
+          "addressLine2": "",
+          "hr_last_name": "Johnson",
+          "hr_contact_no": "123-456-7890",
+          "salaryCurrency": "USD",
+          "whenToContact": "Anytime",
+          "dateFrom": "2016-07-01",
+          "agencyName": "",
+          "eligibleForRehire": "Yes",
+          "reasonForLeaving": "Career Growth",
+          "isCurrent": "No",
+          "dateTo": "2018-06-30",
+          "hr_email": "alice.johnson@techcorp.com",
+          "position": "Junior Developer",
+          "hr_personnel_position": "HR Manager"
+        },
+        {
+          "annualSalary": "90000",
+          "country": "USA",
+          "city": "Mountain View",
+          "companyName": "Innovate Inc",
+          "postalCode": "94043",
+          "employmentStatus": "Full-time",
+          "underAgency": "No",
+          "hr_first_name": "Bob",
+          "companyEmail": "hr@innovateinc.com",
+          "addressLine1": "321 Innovation Dr",
+          "stateRegion": "CA",
+          "canCommunicate": "Yes",
+          "addressLine2": "",
+          "hr_last_name": "Smith",
+          "hr_contact_no": "987-654-3210",
+          "salaryCurrency": "USD",
+          "whenToContact": "After 5 PM",
+          "dateFrom": "2018-07-01",
+          "agencyName": "",
+          "eligibleForRehire": "Yes",
+          "reasonForLeaving": "",
+          "isCurrent": "Yes",
+          "dateTo": "Present",
+          "hr_email": "bob.smith@innovateinc.com",
+          "position": "Senior Developer",
+          "hr_personnel_position": "HR Director"
+        }
+      ]
+    }
+  },
+  "issuanceDate": "2025-03-13T06:46:51.890Z",
+  "holder": {
+    "id": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15"
+  },
+  "id": "claimId:fdf37b6c41ee3347",
+  "proof": {
+    "proofPurpose": "assertionMethod",
+    "type": "EcdsaSecp256k1Signature2019",
+    "verificationMethod": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC#zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
+    "created": "2025-03-13T06:47:24Z",
+    "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..Y0F9CeuWKIzPa8a0qM0cv6h_7JbiIw1xp0YBdC8QuK0wAeSz1m2Kyv6ijPm_eIPcpI8A3HJvuD68zMe7sQHc2A"
+  },
+  "type": ["VerifiableCredential", "AvvanzDigitalCredential"],
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://schema.affinidi.io/personalInfoV1R0.jsonld"
+  ],
+  "issuer": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC"
 }

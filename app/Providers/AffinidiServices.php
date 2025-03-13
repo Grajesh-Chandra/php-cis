@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Log;
 use AffinidiTdk\AuthProvider\AuthProvider;
 use GuzzleHttp\Client;
 use AffinidiTdk\Clients\WalletsClient;
+use AffinidiTdk\Clients\CredentialVerificationClient;
+use AffinidiTdk\Clients\CredentialVerificationClient\Configuration as VerificationClientConfiguration;
 
 class AffinidiServices
 {
@@ -146,4 +148,22 @@ class AffinidiServices
             return ['error' => $e->getMessage()];
                     }
         }
+
+    public static function Verification($verify_credential_input)
+    {
+        Log::info('Verification', ['verify_credential_input' => $verify_credential_input]);
+        $authProvider = self::getProvider();
+        $tokenCallback = [$authProvider, 'fetchProjectScopedToken'];
+        $configClient = VerificationClientConfiguration::getDefaultConfiguration()->setApiKey('authorization', '', $tokenCallback);
+        $apiInstance = new CredentialVerificationClient\Api\DefaultApi(
+            new \GuzzleHttp\Client(),
+            $configClient
+        );
+
+        $result = $apiInstance->verifyCredentials($verify_credential_input);
+
+        $resultJson = json_decode($result, true);
+
+        return $resultJson;
+    }
     }
