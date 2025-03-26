@@ -3,7 +3,7 @@
         "https://www.w3.org/2018/credentials/v1",
         "https://schema.affinidi.io/TpdfSignatureV1R0.jsonld"
     ],
-    "id": "claimId:2fcf3493de0f3f4173a4efa4",
+    "id": "claimId:3b72b2f96ca587629054eab6",
     "type": [
         "VerifiableCredential",
         "TpdfSignatureV1R0"
@@ -24,14 +24,14 @@
         "id": "https://schema.affinidi.io/TpdfSignatureV1R0.json",
         "type": "JsonSchemaValidator2018"
     },
-    "issuanceDate": "2025-03-13T06:48:32.625Z",
+    "issuanceDate": "2025-03-26T06:29:25.737Z",
     "expirationDate": "2030-12-31T23:59:59.000Z",
     "issuer": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
     "proof": {
         "type": "EcdsaSecp256k1Signature2019",
-        "created": "2025-03-13T06:48:32Z",
+        "created": "2025-03-26T06:29:25Z",
         "verificationMethod": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC#zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
         "proofPurpose": "assertionMethod",
-        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..wQy6oxG1rkbmn5uhigI5xicMG8SvHDRFXYDMSvCUs7JoELnUymlKJYll6f77YmZTcvlh_Mw1-Te3zEgaMeLpQA"
+        "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..mOMTN5lLrdLjGaNw1ANy6d-ph6m_OS5ZLC-vMQ6PM_dUZ1fdR4GSipdJmA7OpouvXnZ8kPKEBWUf-tGudh0ecg"
     }
 }

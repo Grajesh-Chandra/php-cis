@@ -5,11 +5,12 @@ namespace App\Providers;
 use AffinidiTdk\Clients\CredentialIssuanceClient as CredentialClient;
 use AffinidiTdk\Clients\IotaClient as IotaClient;
 use Illuminate\Support\Facades\Log;
-use AffinidiTdk\AuthProvider\AuthProvider;
 use GuzzleHttp\Client;
+use AffinidiTdk\AuthProvider\AuthProvider;
 use AffinidiTdk\Clients\WalletsClient;
 use AffinidiTdk\Clients\CredentialVerificationClient;
 use AffinidiTdk\Clients\CredentialVerificationClient\Configuration as VerificationClientConfiguration;
+use AffinidiTdk\Clients\WalletsClient\Configuration;
 
 class AffinidiServices
 {
@@ -124,30 +125,23 @@ class AffinidiServices
     }
     }
 
+
     public static function SignCredentials($wallet_id, $unsignedCredentialParams)
     {
         Log::info('SignCredentials', ['wallet_id' => $wallet_id, 'unsignedCredentialParams' => $unsignedCredentialParams]);
         $authProvider = self::getProvider();
-        $client = new Client();
-        $url = 'https://apse1.api.affinidi.io/cwe/v1/wallets/' . $wallet_id . '/sign-credential';
-        try {
-            $response = $client->request('POST', $url, [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $authProvider->fetchProjectScopedToken(),
-                    'Accept' => 'application/json',
-                    'Content-Type' => 'application/json',
-                ],
-                'json' => $unsignedCredentialParams,
-            ]);
+        $tokenCallback = [$authProvider, 'fetchProjectScopedToken'];
+        $configClient = WalletsClient\Configuration::getDefaultConfiguration()->setApiKey('authorization', '', $tokenCallback);
+        $api = new WalletsClient\Api\WalletApi(
+            new \GuzzleHttp\Client(),
+            $configClient
+        );
+        $result = $api->signCredential($wallet_id, $unsignedCredentialParams);
+        $resultJson = json_decode($result, true);
+        Log::info('SignCredentials', ['resultJson' => $resultJson]);
+        return $resultJson;
 
-            $result = json_decode($response->getBody(), true);
-
-            return $result;
-        } catch (\Exception $e) {
-            Log::error('Error fetching credential status', ['error' => $e->getMessage()]);
-            return ['error' => $e->getMessage()];
-                    }
-        }
+    }
 
     public static function Verification($verify_credential_input)
     {
