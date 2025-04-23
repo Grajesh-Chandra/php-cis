@@ -500,6 +500,9 @@
                 <button class="issue-credential-btn" data-type="avvanz-partial">
                     <svg class="icon-employment"></svg> Avvanz Digital Credential - Partial
                 </button>
+                <button class="issue-credential-btn" data-type="batch-credentials">
+                    <svg class="icon-employment"></svg> Avvanz Digital Credential - Batch
+                </button>
             </div>
         </div>
 

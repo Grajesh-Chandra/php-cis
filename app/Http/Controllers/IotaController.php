@@ -67,7 +67,7 @@ class IotaController extends Controller
             ]);
 
             return response()->json($json_response);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // Handle or log the error
             error_log('JSON error: ' . $e->getMessage());
 
