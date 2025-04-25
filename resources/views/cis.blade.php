@@ -503,6 +503,9 @@
                 <button class="issue-credential-btn" data-type="batch-credentials">
                     <svg class="icon-employment"></svg> Avvanz Digital Credential - Batch
                 </button>
+                <button class="issue-credential-btn" data-type="revoke-credential">
+                    <svg class="icon-employment"></svg> Avvanz Digital Credential - Revokeable
+                </button>
             </div>
         </div>
 

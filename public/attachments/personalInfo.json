@@ -219,22 +219,25 @@
       ]
     }
   },
-  "issuanceDate": "2025-03-13T06:46:51.890Z",
+  "issuanceDate": "2025-04-25T05:48:38.164Z",
   "holder": {
     "id": "did:key:zQ3shs2AM1EMpfDthXaZJmBnjvGbuzMPB94uFAeUkvGe5sM15"
   },
-  "id": "claimId:fdf37b6c41ee3347",
+  "id": "claimId:f4ebe9a02c59ce8d",
   "proof": {
     "proofPurpose": "assertionMethod",
     "type": "EcdsaSecp256k1Signature2019",
-    "verificationMethod": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC#zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC",
-    "created": "2025-03-13T06:47:24Z",
-    "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..Y0F9CeuWKIzPa8a0qM0cv6h_7JbiIw1xp0YBdC8QuK0wAeSz1m2Kyv6ijPm_eIPcpI8A3HJvuD68zMe7sQHc2A"
+    "verificationMethod": "did:web:preferably-in-teal.ngrok-free.app#9a449000f633ba47c9aa20992832534e-ce1ae6b93e0df65d",
+    "created": "2025-04-25T05:49:07Z",
+    "jws": "eyJhbGciOiJFUzI1NksiLCJiNjQiOmZhbHNlLCJjcml0IjpbImI2NCJdfQ..zsQYmWzOcD93O0OUtT21TWVsd4Z8UC657Gkic9fyN2QTrDOBH16jmkLrHYgZhGR4Eunxmdlogo7dfL4Um0rG0g"
   },
-  "type": ["VerifiableCredential", "AvvanzDigitalCredential"],
+  "type": [
+    "VerifiableCredential",
+    "AvvanzDigitalCredential"
+  ],
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
     "https://schema.affinidi.io/personalInfoV1R0.jsonld"
   ],
-  "issuer": "did:key:zQ3shu5JsyoYZUENqh6HKPrt1oD3s85GcCeRKaaqyP57pzFWC"
+  "issuer": "did:web:preferably-in-teal.ngrok-free.app"
 }

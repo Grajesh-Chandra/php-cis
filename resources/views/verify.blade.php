@@ -268,17 +268,58 @@
             bottom: -100px;
             left: -100px;
         }
+
+        /* Enhanced Home Button Style */
+        .home-button-enhanced {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            background-color: #6b7280;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .home-button-enhanced:hover {
+            background-color: #4a5568;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button-enhanced:active {
+            background-color: #374151;
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .header-body {
+            text-align: center;
+            margin-bottom: 40px;
+        }
     </style>
 </head>
 
 <body>
+
     <div class="verification-container">
         <div class="blob blob-1"></div>
+        <div class="header-body">
+            <a href="/" class="home-button-enhanced">Home</a>
+        </div>
         <div class="blob blob-2"></div>
-
         <div class="header">
             <h1>Secure Document Verification</h1>
             <p>Upload your PDF document for instant verification and validation</p>
+
         </div>
 
         <form id="verificationForm" enctype="multipart/form-data">

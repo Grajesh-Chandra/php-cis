@@ -1,0 +1,26 @@
+{
+  "id": "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app",
+  "@context": "https://w3id.org/security/v2",
+  "publicKey": [
+    {
+      "id": "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c",
+      "usage": "signing",
+      "type": "Secp256k1VerificationKey2018",
+      "publicKeyHex": "032f09e76597e19b73afa83be6541380785dea40109707700264a0be9c5c1964e2"
+    }
+  ],
+  "verificationMethod": [
+    {
+      "id": "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c",
+      "type": "Secp256k1VerificationKey2018",
+      "controller": "did:web:preferably-in-teal.ngrok-free.app",
+      "publicKeyHex": "03645b19aa9057c910d335a1de9909bcc5341f204224119c2759ba6113ca373672"
+    }
+  ],
+  "authentication": [
+    "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c"
+  ],
+  "assertionMethod": [
+    "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c"
+  ]
+}

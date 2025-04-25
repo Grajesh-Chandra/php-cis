@@ -695,6 +695,148 @@ class CredentialController extends Controller
 
 
                     break;
+                case 'revoke-credential':
+                    $credentials_request = [
+                        [
+                            "credentialTypeId" => config('services.affinidiCIS.avvanzDigitalCredentialTypeId'),
+                            "credentialData" => [
+                                "personalInformation" => [
+                                    "positionApplied" => "Software Engineer",
+                                    "firstName" => "John",
+                                    "middleName" => "Michael",
+                                    "lastName" => "Doe",
+                                    "aka" => "Johnny",
+                                    "email" => "john.doe@example.com",
+                                    "phoneNo" => "123-456-7890",
+                                    "alterPhoneNo" => "098-765-4321",
+                                    "civilStatus" => "Married",
+                                    "gender" => "Male",
+                                    "primaryIdCard" => "Passport",
+                                    "primaryIdCardNo" => "A12345678",
+                                    "primaryIdCard2" => "Driver's License",
+                                    "primaryIdCardNo2" => "D987654321",
+                                    "photo" => "https://example.com/photos/john_doe.jpg",
+                                    "notes" => "Available for immediate joining."
+                                ],
+                                "addressDetails" => [
+                                    "address" => [
+                                        [
+                                            "addressLine1" => "123 Main St",
+                                            "addressLine2" => "Apt 4B",
+                                            "city" => "New York",
+                                            "stateOrRegion" => "NY",
+                                            "postalCode" => "10001",
+                                            "country" => "USA",
+                                            "stayDateFrom" => "2015-06-01",
+                                            "stayDateTo" => "2020-05-31",
+                                            "houseOwnerName" => "Jane Smith",
+                                            "houseOwnerContactNo" => "111-222-3333",
+                                            "houseOwnerEmail" => "jane.smith@example.com",
+                                            "neighborName" => "Emily Davis",
+                                            "neighborContactNo" => "444-555-6666",
+                                            "neighborEmail" => "emily.davis@example.com"
+                                        ]
+                                    ]
+                                ],
+                                "educationDetails" => [
+                                    [
+                                        "education" => [
+                                            [
+                                                "institutionName" => "Stanford University",
+                                                "institutionContactNo" => "650-723-2300",
+                                                "institutionEmail" => "admissions@stanford.edu",
+                                                "isGraduated" => "Yes",
+                                                "dateFrom" => "2010-09-01",
+                                                "dateTo" => "2014-06-30",
+                                                "dateGraduated" => "2014-06-30",
+                                                "modeOfStudy" => "Full-time",
+                                                "addressLine1" => "450 Serra Mall",
+                                                "addressLine2" => "",
+                                                "postalCode" => "94305",
+                                                "stateRegion" => "CA",
+                                                "city" => "Stanford"
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                "employmentDetails" => [
+                                    "employment" => [
+                                        [
+                                            "companyName" => "Tech Corp",
+                                            "position" => "Junior Developer",
+                                            "employmentStatus" => "Full-time",
+                                            "annualSalary" => "60000",
+                                            "salaryCurrency" => "USD",
+                                            "isCurrent" => "No",
+                                            "whenToContact" => "Anytime",
+                                            "canCommunicate" => "Yes",
+                                            "dateFrom" => "2016-07-01",
+                                            "dateTo" => "2018-06-30",
+                                            "reasonForLeaving" => "Career Growth",
+                                            "companyEmail" => "hr@techcorp.com",
+                                            "addressLine1" => "789 Tech Ave",
+                                            "addressLine2" => "",
+                                            "postalCode" => "90001",
+                                            "stateRegion" => "CA",
+                                            "city" => "Los Angeles",
+                                            "country" => "USA",
+                                            "hr_first_name" => "Alice",
+                                            "hr_last_name" => "Johnson",
+                                            "hr_email" => "alice.johnson@techcorp.com",
+                                            "hr_contact_no" => "123-456-7890",
+                                            "hr_personnel_position" => "HR Manager",
+                                            "eligibleForRehire" => "Yes",
+                                            "underAgency" => "No",
+                                            "agencyName" => ""
+                                        ]
+                                    ]
+                                ],
+                                "employmentPerformanceDetails" => [
+                                    "employmentPerformance" => [
+                                        [
+                                            "companyName" => "Tech Corp",
+                                            "position" => "Junior Developer",
+                                            "supervisorFirstName" => "Carol",
+                                            "supervisorMiddleName" => "",
+                                            "supervisorLastName" => "White",
+                                            "supervisorPosition" => "Team Lead",
+                                            "supervisorEmail" => "carol.white@techcorp.com",
+                                            "addressLine1" => "789 Tech Ave",
+                                            "addressLine2" => "",
+                                            "postalCode" => "90001",
+                                            "stateRegion" => "CA",
+                                            "city" => "Los Angeles",
+                                            "country" => "USA",
+                                            "contactNo" => "123-456-7890",
+                                            "isCurrent" => "No",
+                                            "canCommunicate" => "Yes",
+                                            "whenToContact" => "Anytime",
+                                            "referenceRelationship" => "Supervisor",
+                                            "bestTimeToCall" => "10 AM - 4 PM"
+                                        ]
+                                    ]
+                                ],
+                                "professionalQualificationDetails" => [
+                                    "professionalQualification" => [
+                                        [
+                                            "certificateIssuingAuthority" => "Oracle",
+                                            "qualificationAttained" => "Oracle Certified Professional, Java SE 8 Programmer",
+                                            "certificateNumber" => "OCJP123456789",
+                                            "dateGranted" => "2015-08-15",
+                                            "country" => "USA"
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            "statusListDetails" => [[
+                                "purpose" => "REVOCABLE",
+                                "standard" => "RevocationList2020"
+                            ]
+                        ]
+                        ]
+                    ];
+                    break;
+
                 default:
                     return response()->json(["error" => "Invalid typeId"], 400);
             }

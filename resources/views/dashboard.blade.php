@@ -242,6 +242,38 @@
             transform: translateY(0);
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
         }
+
+        /* Enhanced Home Button Style */
+        .home-button-enhanced {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            background-color: #6b7280;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .home-button-enhanced:hover {
+            background-color: #4a5568;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button-enhanced:active {
+            background-color: #374151;
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -250,6 +282,7 @@
     <div class="container">
         <div class="header-body">
             <h1>Dashboard</h1>
+            <a href="/" class="home-button-enhanced">Home</a>
         </div>
 
         <div class="card-body">
