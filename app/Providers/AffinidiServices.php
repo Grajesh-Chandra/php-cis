@@ -7,6 +7,7 @@ use AffinidiTdk\Clients\IotaClient as IotaClient;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
 use AffinidiTdk\AuthProvider\AuthProvider;
+use AffinidiTdk\Clients\CredentialIssuanceClient\Api\CredentialsApi;
 use AffinidiTdk\Clients\WalletsClient;
 use AffinidiTdk\Clients\CredentialVerificationClient;
 use AffinidiTdk\Clients\CredentialVerificationClient\Configuration as VerificationClientConfiguration;
@@ -177,6 +178,24 @@ class AffinidiServices
 
         // Decode the response
         $resultJson = json_decode($response, true);
+        return $resultJson;
+    }
+
+    public static function listIssuanceDataRecords($project_id, $configuration_id, $issuance_id)
+    {
+        $authProvider = self::getProvider();
+        $tokenCallback = [$authProvider, 'fetchProjectScopedToken'];
+        $configClient = CredentialClient\Configuration::getDefaultConfiguration()->setApiKey('authorization', '', $tokenCallback);
+        $apiInstance = new CredentialClient\Api\DefaultApi(
+            new \GuzzleHttp\Client(),
+            $configClient
+        );
+
+        $result = $apiInstance->listIssuanceDataRecords($project_id, $configuration_id); // Added $configuration_id
+
+        $resultJson = json_decode($result, true);
+        Log::info('listIssuanceDataRecords', ['resultJson' => $resultJson]);
+
         return $resultJson;
     }
 }

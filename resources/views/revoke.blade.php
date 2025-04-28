@@ -240,8 +240,8 @@
             <a href="/" class="home-button-enhanced" style="margin-bottom: 30px;">Home</a>
 
             <div class="form-group">
-                <label for="credentialId" class="form-label">Credential ID:</label>
-                <input type="text" id="credentialId" class="form-input" placeholder="e.g., claimId:253b0e8dcd46b789789">
+                <label for="credentialId" class="form-label">Credential Issuance ID:</label>
+                <input type="text" id="credentialId" class="form-input" placeholder="e.g., 53984e07-15ac-49a2-9dfc-b7c843c5b322">
             </div>
 
             <div class="form-group">
