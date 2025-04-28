@@ -530,6 +530,10 @@
                             <span class="offer-info-label">Transaction Code:</span>
                             <p class="offer-info-value" id="txCode"></p>
                         </div>
+                        <div class="offer-info-item">
+                            <span class="offer-info-label">Issuance Id:</span>
+                            <p class="offer-info-value" id="issuanceId"></p>
+                        </div>
                     </div>
                 </div>
                 <div class="offer-ready-actions">
