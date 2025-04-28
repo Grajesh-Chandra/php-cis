@@ -7,6 +7,8 @@ use App\Http\Controllers\CredentialController;
 use App\Http\Controllers\IotaController;
 use App\Http\Controllers\GeneratePdfController;
 use App\Http\Controllers\PdfVerificationController;
+use App\Http\Controllers\verificatonController;
+use App\Http\Controllers\revocationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,3 +33,5 @@ Route::get('/generate-pdf', [GeneratePdfController::class, 'generatePdf'])->name
 Route::get('/download-pdf', [GeneratePdfController::class, 'generatePdfWithAttachment'])->name('download.pdf');
 Route::post('/verify-pdf', [PdfVerificationController::class, 'verify'])->name('verify.pdf');
 Route::get('/verify-pdf-status', [PdfVerificationController::class, 'status'])->name('verify.pdf.status');
+Route::post('/verify-credentials', [verificatonController::class, 'verifyCredentials']);
+Route::post('/revoke-credentials', [revocationController::class, 'revokeCredential']);

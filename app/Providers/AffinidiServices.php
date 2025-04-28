@@ -10,7 +10,8 @@ use AffinidiTdk\AuthProvider\AuthProvider;
 use AffinidiTdk\Clients\WalletsClient;
 use AffinidiTdk\Clients\CredentialVerificationClient;
 use AffinidiTdk\Clients\CredentialVerificationClient\Configuration as VerificationClientConfiguration;
-use AffinidiTdk\Clients\WalletsClient\Configuration;
+
+use function Laravel\Prompts\error;
 
 class AffinidiServices
 {
@@ -102,27 +103,26 @@ class AffinidiServices
     }
 
     public static function CredentialStatus($project_id, $configuration_id, $issuance_id)
-    {
-        {
-        Log::info('IssuedCredential', ['project_id' => $project_id, 'configuration_id' => $configuration_id, 'issuance_id' => $issuance_id]);
-        $authProvider = self::getProvider();
-        $client = new Client();
-        $url = 'https://apse1.api.affinidi.io/cis/v1/' . $project_id . '/configurations/' . $configuration_id . '/issuances/' . $issuance_id . '/credentials'; // Corrected URL with $configuration_id
-        try {
-            $response = $client->request('GET', $url, [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $authProvider->fetchProjectScopedToken(),
-                    'Accept' => 'application/json',
-                ],
-            ]);
+    { {
+            Log::info('IssuedCredential', ['project_id' => $project_id, 'configuration_id' => $configuration_id, 'issuance_id' => $issuance_id]);
+            $authProvider = self::getProvider();
+            $client = new Client();
+            $url = 'https://apse1.api.affinidi.io/cis/v1/' . $project_id . '/configurations/' . $configuration_id . '/issuances/' . $issuance_id . '/credentials'; // Corrected URL with $configuration_id
+            try {
+                $response = $client->request('GET', $url, [
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $authProvider->fetchProjectScopedToken(),
+                        'Accept' => 'application/json',
+                    ],
+                ]);
 
-            $result = json_decode($response->getBody(), true);
-            return $result;
-        } catch (\Exception $e) {
-            Log::error('Error fetching credential status', ['error' => $e->getMessage()]);
-            return ['error' => $e->getMessage()];
+                $result = json_decode($response->getBody(), true);
+                return $result;
+            } catch (\Exception $e) {
+                Log::error('Error fetching credential status', ['error' => $e->getMessage()]);
+                return ['error' => $e->getMessage()];
+            }
         }
-    }
     }
 
 
@@ -140,7 +140,6 @@ class AffinidiServices
         $resultJson = json_decode($result, true);
         Log::info('SignCredentials', ['resultJson' => $resultJson]);
         return $resultJson;
-
     }
 
     public static function Verification($verify_credential_input)
@@ -160,4 +159,24 @@ class AffinidiServices
 
         return $resultJson;
     }
+
+    public static function revokeCredentials($project_id, $configuration_id, $revoke_credential_input) // Corrected method name
+    {
+        Log::info('revokeCredentials', ['project_Id' => $project_id, 'configuration_id' => $configuration_id, 'revoke_credential_input' => $revoke_credential_input]);
+
+        $authProvider = self::getProvider();
+        $tokenCallback = [$authProvider, 'fetchProjectScopedToken'];
+        $configClient = CredentialClient\Configuration::getDefaultConfiguration()->setApiKey('authorization', '', $tokenCallback);
+        $api = new CredentialClient\Api\DefaultApi(
+            new \GuzzleHttp\Client(),
+            $configClient
+        );
+
+        $response = $api->changeCredentialStatus($project_id, $configuration_id, $revoke_credential_input);
+        Log::info('Revoke response', ['response' => $response]);
+
+        // Decode the response
+        $resultJson = json_decode($response, true);
+        return $resultJson;
     }
+}

@@ -42,6 +42,7 @@ return [
         'pdf_signature_json' => env('PDF_SIGNATURE_JSON'),
         'pdf_signature_jsonld' => env('PDF_SIGNATURE_JSONLD'),
         'pdf_signature_type_id' => env('PDF_SIGNATURE_TYPE_ID'),
+        'walletIdDIDWEB' => env('WALLET_ID_DID_WEB'),
     ],
 
 ];

@@ -238,6 +238,12 @@
                 <a href="/verify">
                     Verify Final Check Report
                 </a>
+                <a href="/vcverify">
+                    Verify VC
+                </a>
+                <a href="/revoke">
+                    Revoke Credential
+                </a>
             </div>
         </div>
     </div>

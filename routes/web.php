@@ -34,6 +34,14 @@ Route::get('/verify', function () {
     return view('verify');
 });
 
+Route::get('/vcverify', function () {
+    return view('vcverify');
+});
+
+Route::get('/revoke', function () {
+    return view('revoke');
+});
+
 Route::get('/iota', function (Request $request) {
 
     $iotaConfig = config('services.affinidi_iota');

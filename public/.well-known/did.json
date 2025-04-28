@@ -1,26 +1,26 @@
 {
-  "id": "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app",
+  "id": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app",
   "@context": "https://w3id.org/security/v2",
   "publicKey": [
     {
-      "id": "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c",
+      "id": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c",
       "usage": "signing",
       "type": "Secp256k1VerificationKey2018",
-      "publicKeyHex": "032f09e76597e19b73afa83be6541380785dea40109707700264a0be9c5c1964e2"
+      "publicKeyHex": "03e0d4e543647dab1d13c7ea3a5770bc4f7c5f803df77f1bdd53fa942abee20ed6"
     }
   ],
   "verificationMethod": [
     {
-      "id": "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c",
+      "id": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c",
       "type": "Secp256k1VerificationKey2018",
-      "controller": "did:web:preferably-in-teal.ngrok-free.app",
-      "publicKeyHex": "03645b19aa9057c910d335a1de9909bcc5341f204224119c2759ba6113ca373672"
+      "controller": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app",
+      "publicKeyHex": "03e0d4e543647dab1d13c7ea3a5770bc4f7c5f803df77f1bdd53fa942abee20ed6"
     }
   ],
   "authentication": [
-    "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c"
+    "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c"
   ],
   "assertionMethod": [
-    "did:web:2ed0-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#9697ccde04863a059f7707381039c37f-b89a1170537fab1c"
+    "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c"
   ]
 }
