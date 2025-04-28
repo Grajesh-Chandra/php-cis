@@ -30,7 +30,6 @@ class revocationController extends Controller
         // Fetch issuance records response
         $issuanceResponse = AffinidiServices::listIssuanceDataRecords($project_id, $configuration_id, $credentialIdToFind);
 
-        // *** START: Modified Section ***
         Log::debug('Raw response from listIssuanceDataRecords:', ['data' => $issuanceResponse]); // Keep this for debugging
 
         // Check if the response structure is as expected and extract the flowData array
@@ -48,7 +47,6 @@ class revocationController extends Controller
             // Add checks for robustness within the loop
             return is_array($record) && isset($record['flowId']) && $record['flowId'] === $credentialIdToFind;
         });
-        // *** END: Modified Section ***
 
 
         // Check if a matching issuance record was found

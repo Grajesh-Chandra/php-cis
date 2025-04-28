@@ -249,6 +249,7 @@
                 <select id="revocationReason" class="form-input">
                     <option value="INVALID_CREDENTIAL">INVALID_CREDENTIAL</option>
                     <option value="COMPROMISED_ISSUER">COMPROMISED_ISSUER</option>
+                    <!-- Add other valid reasons if applicable -->
                 </select>
             </div>
 
@@ -285,12 +286,7 @@
                 credentialIdInput.focus(); // Focus on the empty field
                 return;
             }
-            if (!revocationReason) {
-                divMessage.textContent = 'Please enter the Revocation Reason.';
-                divMessage.classList.add('text-danger');
-                revocationReasonInput.focus(); // Focus on the empty field
-                return;
-            }
+            // No need to validate revocationReason as it's a select with default
 
             // Disable button and show loading state
             revokeBtn.disabled = true;
@@ -303,7 +299,7 @@
                 revocationReason: revocationReason
             };
 
-            fetch('/api/revoke-credentials', { // Changed endpoint
+            fetch('/api/revoke-credentials', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -311,47 +307,59 @@
                         // Add CSRF token header if your application uses it for API routes
                         // 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                     },
-                    body: JSON.stringify(payload) // Send the structured payload
+                    body: JSON.stringify(payload)
                 })
                 .then(response => {
-                    // Check if the response is successful (status code 2xx)
-                    if (!response.ok) {
-                        // Try to parse error response body
-                        return response.json().then(errData => {
-                            throw new Error(errData.message || `HTTP error! Status: ${response.status}`);
-                        }).catch(() => {
-                            throw new Error(`HTTP error! Status: ${response.status}`);
-                        });
-                    }
-                    // If response is OK, but might not have a body (e.g., 204 No Content)
-                    // Check content-type or status code if needed. Assuming JSON response for success here.
-                    if (response.status === 204) {
-                        return {
-                            message: 'Credential revoked successfully.'
-                        }; // Create a success object for consistent handling
-                    }
-                    return response.json(); // Parse the successful JSON response
+                    // Store the status code
+                    const statusCode = response.status;
+                    // Always try to parse the body as JSON
+                    return response.json().then(data => ({ // Wrap data and status
+                        ok: response.ok,
+                        status: statusCode,
+                        body: data
+                    })).catch(() => ({ // Handle cases where body is not JSON or empty
+                        ok: response.ok,
+                        status: statusCode,
+                        body: null // Indicate no parsable body
+                    }));
                 })
-                .then(data => {
-                    console.log('Revocation Success:', data);
-                    divMessage.classList.remove('text-danger');
-                    divMessage.classList.add('text-success');
-                    divMessage.style.textAlign = 'center'; // Center success message
+                .then(result => {
+                    // Check if the request was successful (status 2xx)
+                    if (result.ok) {
+                        console.log('Revocation Success:', result.body);
+                        divMessage.classList.remove('text-danger');
+                        divMessage.classList.add('text-success');
+                        divMessage.style.textAlign = 'center';
 
-                    // Display a user-friendly success message
-                    divMessage.textContent = data.message || 'Credential revoked successfully!';
+                        // Display a user-friendly success message
+                        // Use message from body if available, otherwise a default
+                        divMessage.textContent = (result.body && result.body.message) || 'Credential revoked successfully!';
 
-                    // Optionally clear fields on success
-                    credentialIdInput.value = '';
-                    // revocationReasonInput.value = '';
+                        // Optionally clear fields on success
+                        credentialIdInput.value = '';
 
+                    } else {
+                        // If not OK, throw an error with details from the body if possible
+                        console.error('Revocation Error Response:', result);
+                        // Prioritize the 'error' field from the JSON body
+                        const errorMessage = (result.body && result.body.error)
+                            // Fallback to 'message' field if 'error' isn't present
+                            ||
+                            (result.body && result.body.message)
+                            // Fallback to generic HTTP status text
+                            ||
+                            `Request failed with status: ${result.status}`;
+                        throw new Error(errorMessage);
+                    }
                 })
                 .catch((error) => {
-                    console.error('Revocation Error:', error);
+                    // This catch block now receives the more specific error message
+                    console.error('Revocation Processing Error:', error);
                     divMessage.classList.remove('text-success');
                     divMessage.classList.add('text-danger');
                     divMessage.style.textAlign = 'center';
-                    divMessage.textContent = `Revocation failed: ${error.message}`;
+                    // Display the specific error message
+                    divMessage.textContent = `Error: ${error.message}`;
                 })
                 .finally(() => {
                     // Re-enable button and restore text
