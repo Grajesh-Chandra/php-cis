@@ -1,26 +1,32 @@
 {
-  "id": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app",
+  "id": "did:web:preferably-in-teal.ngrok-free.app",
   "@context": "https://w3id.org/security/v2",
   "publicKey": [
     {
-      "id": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c",
+      "id": "did:web:preferably-in-teal.ngrok-free.app#5ef529c93650b645542834b371be012c-4289d320789fd97e",
       "usage": "signing",
       "type": "Secp256k1VerificationKey2018",
-      "publicKeyHex": "03e0d4e543647dab1d13c7ea3a5770bc4f7c5f803df77f1bdd53fa942abee20ed6"
+      "publicKeyHex": "0290955813b93a74fda28cb2a2a38230e32bcf7bf58e9cdd0217a963089abb1b75"
     }
   ],
   "verificationMethod": [
     {
-      "id": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c",
+      "id": "did:web:preferably-in-teal.ngrok-free.app#5ef529c93650b645542834b371be012c-4289d320789fd97e",
+      "controller": "did:web:preferably-in-teal.ngrok-free.app",
       "type": "Secp256k1VerificationKey2018",
-      "controller": "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app",
-      "publicKeyHex": "03e0d4e543647dab1d13c7ea3a5770bc4f7c5f803df77f1bdd53fa942abee20ed6"
+      "publicKeyHex": "0290955813b93a74fda28cb2a2a38230e32bcf7bf58e9cdd0217a963089abb1b75",
+      "publicKeyJwk": {
+        "kty": "EC",
+        "crv": "secp256k1",
+        "x": "kJVYE7k6dP2ijLKio4Iw4yvPe_WOnN0CF6ljCJq7G3VD",
+        "y": "Q-x8FZbh92Yc8wishUtei1HZgdsbS5JMrb-8MkQ6eag"
+      }
     }
   ],
   "authentication": [
-    "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c"
+    "did:web:preferably-in-teal.ngrok-free.app#5ef529c93650b645542834b371be012c-4289d320789fd97e"
   ],
   "assertionMethod": [
-    "did:web:27b9-2402-e280-21ca-9183-6567-a205-a9a9-17cc.ngrok-free.app#e2a1117f4fedd5a73b343d57b471a539-b70a49f63c2f503c"
+    "did:web:preferably-in-teal.ngrok-free.app#5ef529c93650b645542834b371be012c-4289d320789fd97e"
   ]
 }
